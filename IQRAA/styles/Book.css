@@ -1,0 +1,38 @@
+.bookCard {
+    border: solid black;
+    width: fit-content;
+    margin-top: 20px;
+    height: fit-content;
+}
+
+.bookPic {
+    width: 150px;
+    border: solid black;
+    margin-top: 3%;
+}
+
+.bookTitle {
+    font-size: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.font {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+}
+
+.progress {
+    height: 20px;
+    width: 300px;
+    border: solid black;
+    border-width: 1.5px;
+    background-color: #F2E8CF;
+  }
+
+  .progress-bar {
+    background-color: #A7C957;
+    color: #000;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+

@@ -1,0 +1,37 @@
+body {
+    background-color:#588157;
+    padding-bottom: 366px;
+}
+
+table {
+    border: solid 2px;
+    width: 50%;
+    height: 200px;
+    margin: auto;
+    color: #DAD7CD;
+}
+
+th {
+    border: solid 1px;
+    height: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    background-color: #386641;
+    color: #DAD7CD;
+}
+
+td {
+    border: solid 1px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    font-weight: 900;
+    background-color: #6A994E;
+    text-shadow: black 1px 1px;
+}
+
+iframe {
+    margin-top:50px;
+    width: 400px;
+    height: 300px;
+}
