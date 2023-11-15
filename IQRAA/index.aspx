@@ -15,7 +15,6 @@
 <body>
     <section id="hero">
         <header class="navBar" onscroll="">
-
             <div id="menu">
                 <a href="#hero"><img src="media/images/Book32px.png" id="navBarIcon"></a>
                 <div id="menuOptions">
@@ -42,6 +41,8 @@
                 <button class="sign" id="login" onclick="open_login()">Log in</button>
             </div>
 
+
+
             <div class="form-popup" id="login_form">
                 <form class="form-container">
                     <center>
@@ -58,6 +59,8 @@
                     <button type="button" class="secondary_btn cancel" onclick="close_login()">Close</button>
                 </form>
             </div>
+
+
 
             <div class="form-popup" id="signup_form">
                 <form class="form-container">
@@ -76,6 +79,8 @@
                 </form>
             </div>
         </header>
+
+
 
         <div class="heroSection">
             <div id="mainLogo">

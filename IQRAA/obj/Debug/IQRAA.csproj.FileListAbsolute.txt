@@ -71,3 +71,9 @@ D:\source\repos\IQRAA\IQRAA\obj\Debug\IQRAA.csproj.CoreCompileInputs.cache
 D:\source\repos\IQRAA\IQRAA\obj\Debug\IQRAA.csproj.CopyComplete
 D:\source\repos\IQRAA\IQRAA\obj\Debug\IQRAA.dll
 D:\source\repos\IQRAA\IQRAA\obj\Debug\IQRAA.pdb
+D:\source\repos\IQRAA\IQRAA\bin\System.Net.Http.Formatting.dll
+D:\source\repos\IQRAA\IQRAA\bin\System.Web.Http.dll
+D:\source\repos\IQRAA\IQRAA\bin\System.Web.Http.WebHost.dll
+D:\source\repos\IQRAA\IQRAA\bin\System.Net.Http.Formatting.xml
+D:\source\repos\IQRAA\IQRAA\bin\System.Web.Http.xml
+D:\source\repos\IQRAA\IQRAA\bin\System.Web.Http.WebHost.xml
