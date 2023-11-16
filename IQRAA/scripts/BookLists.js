@@ -242,7 +242,13 @@ function add_custom_carousel() {
 }
 
 async function fetch_book(ISBN) {
-    const response = await fetch(`https://openlibrary.org/api/books?bibkeys=ISBN:${ISBN}&jscmd=data&format=json`)
+    //const response = await fetch(`https://openlibrary.org/api/books?bibkeys=ISBN:${ISBN}&jscmd=data&format=json`)
+    const response = await fetch(`https://localhost:44313/WebService1.asmx/FetchBook?ISBN=9780312944926`);
+    //JSON.stringify(response);
+
+    const json = xml2json(response, { spaces: 2, compact: true });
+
+    console.log(json);
     const data = response.json();
     var await_data = await data;
     return await_data["ISBN:" + ISBN];

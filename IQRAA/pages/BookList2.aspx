@@ -14,6 +14,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/c#" src="../scripts/Book.cs" defer></script>
 
 </head>
 <body>
@@ -241,27 +242,31 @@
     </div>
     <!--------------------------------edit book progress popup----------------------------------->
 
-    <form id="form1" runat="server">
+
+    
+
+    <form id="HiddenForm" runat="server">
 
         <asp:SqlDataSource ID="SqlDataSourceBook" runat="server"
             ConnectionString="<%$ ConnectionStrings:IQRAA_dbConnectionString %>"
             SelectCommand="SELECT book_id, ISBN_13, ISBN_10, title, url, author, num_of_pages, 
             publish_date, cover_small, cover_medium, cover_large FROM Books"></asp:SqlDataSource>
-
+        
 
         <asp:Button runat="server" OnClick="Unnamed1_Click" Text="Fetch" />
         <br />
         <!--<asp:TextBox ID="ISBN_13" runat="server" placeholder="ISBN-13"></asp:TextBox>
         <asp:TextBox ID="ISBN_10" runat="server" placeholder="ISBN-10"></asp:TextBox>-->
-
+        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
     </form>
 
     <code></code>
 
     <script rel="javascript" type="text/javascript" src="../scripts/BookLists.js" defer>
     </script>
-    <script type="text/c#" src="../scripts/Book.cs" defer>
-    </script>
+    
+        
+    
 
 
 

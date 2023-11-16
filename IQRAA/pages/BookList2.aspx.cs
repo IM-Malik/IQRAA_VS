@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI;
+using System.Text;
 
 namespace IQRAA.pages
 {
@@ -17,7 +19,7 @@ namespace IQRAA.pages
 			
 		}
 
-		void FetchBook(object sender, EventArgs e)
+		protected void FetchBook()
 		{
 			/*string ConnectionString = ConfigurationManager.ConnectionStrings["IQRAAConnectionString"].ConnectionString;
 			SqlConnection DbConnection = new SqlConnection(ConnectionString);
@@ -29,6 +31,21 @@ namespace IQRAA.pages
 
 			DataView dv = SqlDataSourceBook.Select(DataSourceSelectArguments.Empty) as DataView;
 			Book k = Mapper.MapBook(dv);
+
+			string json =  Newtonsoft.Json.JsonConvert.SerializeObject(k);
+			StringBuilder ss = new StringBuilder();
+			ss.Append("<div id='HiddenBook' hidden>" + json + "</div>");
+			Literal1.Text = ss.ToString();
+			//return json;
+
+
+
+
+
+			//Response.Write(string.Concat("<input id='jsonData' type=''hidden' value='", json,"' >"));
+			
+			//HtmlTextWriter writer = new HtmlTextWriter(Response.Output);
+			//writer.Write(json);
 
 			int g = (int)dv[0]["book_id"];
 			
@@ -49,7 +66,7 @@ namespace IQRAA.pages
 
 		protected void Unnamed1_Click(object sender, EventArgs e)
 		{
-			FetchBook(sender, e);
+			FetchBook();
 		}
 	}
 }
