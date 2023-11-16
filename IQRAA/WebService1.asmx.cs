@@ -38,35 +38,48 @@ namespace IQRAA
 
 		[WebMethod]
 		[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-		public string FetchBook(string ISBN)
-		{
-			Dictionary <string, object> result = new Dictionary<string, object>();
-			string json;
-			using (SqlConnection connection = new SqlConnection(connectionString))
-			{
-				connection.Open();
+  
+        public void FetchBook(string ISBN)
+        {
+            Dictionary<string, object> result = new Dictionary<string, object>();
 
-				string query = "SELECT book_id, ISBN_13, ISBN_10, title, url, author, num_of_pages,publish_date, cover_small, " +
-					"cover_medium, cover_large FROM Books";
-				using (SqlCommand command = new SqlCommand(query, connection))
-				{
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
 
-					using (SqlDataReader reader = command.ExecuteReader())
-					{
-						if (reader.Read())
-						{
-							for(int i = 0; i < reader.FieldCount; i++)
-							{
-								result.Add(reader.GetName(i), reader.GetValue(i));
-							}
-							json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-							return json;
-						}
-						return "not found";
-					}
+                string query = "SELECT book_id, ISBN_13, ISBN_10, title, url, author, num_of_pages, publish_date, cover_small, " +
+                    "cover_medium, cover_large FROM Books WHERE ISBN_13 = @ISBN";
 
-				}
-			}
-		}
-	}
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ISBN", ISBN);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                result.Add(reader.GetName(i), reader.GetValue(i));
+                            }
+
+                            // Use Newtonsoft.Json to serialize the result dictionary to JSON
+                            string json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+
+                            // Set content type to JSON
+                            HttpContext.Current.Response.ContentType = "application/json";
+
+                            // Write the JSON string directly to the response
+                            HttpContext.Current.Response.Write(json);
+                        }
+                        else
+                        {
+                            HttpContext.Current.Response.Write("not found");
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 }

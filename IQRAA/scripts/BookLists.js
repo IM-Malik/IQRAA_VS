@@ -18,8 +18,9 @@ function add_book(carousel_id) {
             $('#addBookModal').modal('hide');
             var book = await openAddBookModal_fetchBook(ISBN);
             //glo_book = book;
-
-            var num_of_pages = book.number_of_pages;
+            console.log(book);
+            var num_of_pages = book.ISBN_13;
+            console.log(num_of_pages);
 
             document.getElementById("bookProgress").setAttribute("max", num_of_pages);
             var num_pages_span = document.createElement("span");
@@ -246,12 +247,15 @@ async function fetch_book(ISBN) {
     const response = await fetch(`https://localhost:44313/WebService1.asmx/FetchBook?ISBN=9780312944926`);
     //JSON.stringify(response);
 
-    const json = xml2json(response, { spaces: 2, compact: true });
+    var responseJson = response.json();
+    
+    var rspJson = await responseJson;
+    console.log(rspJson);
+    console.log(responseJson["ISBN_13:" + ISBN])
 
-    console.log(json);
-    const data = response.json();
-    var await_data = await data;
-    return await_data["ISBN:" + ISBN];
+    
+
+    return rspJson;
 
 }
 
