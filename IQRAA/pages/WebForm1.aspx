@@ -15,15 +15,22 @@
         </div>
         email&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="email_input" runat="server"></asp:TextBox>
+            <input id="Text1" type="text" />
         <p>
             first name&nbsp;
-            <asp:TextBox ID="fname_input" runat="server"></asp:TextBox>
+            <asp:TextBox ID="fname_input" runat="server" TextMode="Password"></asp:TextBox>
+            <a runat="server">jsklda</a>
         </p>
+
+        <asp:TextBox ID="psw" runat="server" TextMode="Password"></asp:TextBox>
+        <asp:TextBox ID="cpsw" runat="server" TextMode="Password"></asp:TextBox>
+        <asp:TextBox ID="email" runat="server" placeholder="Enter Email"></asp:TextBox>
+
         <asp:Button ID="save_btn" runat="server" Height="47px" OnClick="Button1_Click" Text="save" Width="92px" />
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:IQRAA_dbConnectionString %>" InsertCommand="INSERT INTO Temp(email, first_name) VALUES (@email, @fname)" ProviderName="<%$ ConnectionStrings:IQRAA_dbConnectionString.ProviderName %>" SelectCommand="SELECT [email], [first_name] FROM [Temp]">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:IQRAA_dbConnectionString %>" SelectCommand="SELECT * FROM [Book_list]" OnSelecting="SqlDataSource1_Selecting" OnInserting="SqlDataSource1_Inserting" InsertCommand="INSERT INTO Users(password, email) VALUES (@psw, @email)">
             <InsertParameters>
-                <asp:ControlParameter ControlID="email_input" Name="email" PropertyName="Text" />
-                <asp:ControlParameter ControlID="fname_input" Name="fname" PropertyName="Text" />
+                <asp:ControlParameter ControlID="email" Name="email" PropertyName="Text" />
+                <asp:ControlParameter ControlID="psw" Name="psw" PropertyName="Text" />
             </InsertParameters>
         </asp:SqlDataSource>
     </form>

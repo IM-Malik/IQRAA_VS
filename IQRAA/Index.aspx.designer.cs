@@ -7,57 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IQRAA.pages
+namespace IQRAA
 {
 
 
-	public partial class WebForm1
+	public partial class Index
 	{
 
 		/// <summary>
-		/// form1 control.
+		/// signup_form control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-		/// <summary>
-		/// email_input control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox email_input;
-
-		/// <summary>
-		/// fname_input control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox fname_input;
-
-		/// <summary>
-		/// psw control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox psw;
-
-		/// <summary>
-		/// cpsw control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox cpsw;
+		protected global::System.Web.UI.HtmlControls.HtmlForm signup_form;
 
 		/// <summary>
 		/// email control.
@@ -66,16 +30,43 @@ namespace IQRAA.pages
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox email;
+		protected global::System.Web.UI.HtmlControls.HtmlInputText email;
 
 		/// <summary>
-		/// save_btn control.
+		/// txt_email control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button save_btn;
+		protected global::System.Web.UI.WebControls.TextBox txt_email;
+
+		/// <summary>
+		/// txt_psw control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txt_psw;
+
+		/// <summary>
+		/// txt_cpsw control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txt_cpsw;
+
+		/// <summary>
+		/// Button1 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button Button1;
 
 		/// <summary>
 		/// SqlDataSource1 control.

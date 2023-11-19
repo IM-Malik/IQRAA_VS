@@ -18,5 +18,15 @@ namespace IQRAA.pages
 		{
 			//SqlDataSource1.Insert();
 		}
+
+        protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        {
+
+        }
+
+		protected void SqlDataSource1_Inserting(object sender, SqlDataSourceCommandEventArgs e)
+		{
+
+		}
 	}
 }

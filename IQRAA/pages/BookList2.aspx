@@ -252,22 +252,11 @@
             SelectCommand="SELECT book_id, ISBN_13, ISBN_10, title, url, author, num_of_pages, 
             publish_date, cover_small, cover_medium, cover_large FROM Books"></asp:SqlDataSource>
         
-
-        <asp:Button runat="server" OnClick="Unnamed1_Click" Text="Fetch" />
-        <br />
-        <!--<asp:TextBox ID="ISBN_13" runat="server" placeholder="ISBN-13"></asp:TextBox>
-        <asp:TextBox ID="ISBN_10" runat="server" placeholder="ISBN-10"></asp:TextBox>-->
-        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
     </form>
 
     <code></code>
 
-    <script rel="javascript" type="text/javascript" src="../scripts/BookLists.js" defer>
-    </script>
-    
-        
-    
-
+    <script rel="javascript" type="text/javascript" src="../scripts/BookLists.js" defer></script>
 
 
 </body>

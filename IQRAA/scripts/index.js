@@ -1,21 +1,37 @@
+var singup = document.getElementById("signup_form");
+var login = document.getElementById("login_form");
 function open_login() {
-    if (document.getElementById("signup_form").style.display = "block") {
-        document.getElementById("signup_form").style.display = "none";
+    signup.removeAttribute("runat");
+    login.setAttribute("runat", "server");
+    if (singup.style.display = "block") {
+        singup.style.display = "none";
     }
-    document.getElementById("login_form").style.display = "block";
+    login.style.display = "block";
 }
 
 function close_login() {
-    document.getElementById("login_form").style.display = "none";
-}  
+    login.style.display = "none";
+}
 
 function open_signup() {
-    if (document.getElementById("login_form").style.display == "block") {
-        document.getElementById("login_form").style.display = "none";
+    login.removeAttribute("runat");
+    signup.setAttribute("runat", "server");
+    if (login.style.display == "block") {
+        login.style.display = "none";
     }
-    document.getElementById("signup_form").style.display = "block";
+    singup.style.display = "block";
 }
 
 function close_signup() {
-    document.getElementById("signup_form").style.display = "none";
-}  
+    signup.style.display = "none";
+}
+
+function show_hide_password(id) {
+    var password = document.getElementById(id);
+    console.log(password.type);
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}

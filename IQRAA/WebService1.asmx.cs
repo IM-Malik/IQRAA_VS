@@ -38,48 +38,62 @@ namespace IQRAA
 
 		[WebMethod]
 		[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-  
-        public void FetchBook(string ISBN)
-        {
-            Dictionary<string, object> result = new Dictionary<string, object>();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
+		public void FetchBook(string ISBN)
+		{
+			Dictionary<string, object> result = new Dictionary<string, object>();
 
-                string query = "SELECT book_id, ISBN_13, ISBN_10, title, url, author, num_of_pages, publish_date, cover_small, " +
-                    "cover_medium, cover_large FROM Books WHERE ISBN_13 = @ISBN";
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				connection.Open();
 
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@ISBN", ISBN);
+				string query = "SELECT book_id, ISBN_13, ISBN_10, title, url, author, num_of_pages, publish_date, cover_small, " +
+					"cover_medium, cover_large FROM Books WHERE ISBN_13 = @ISBN";
 
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            for (int i = 0; i < reader.FieldCount; i++)
-                            {
-                                result.Add(reader.GetName(i), reader.GetValue(i));
-                            }
+				using (SqlCommand command = new SqlCommand(query, connection))
+				{
+					command.Parameters.AddWithValue("@ISBN", ISBN);
 
-                            // Use Newtonsoft.Json to serialize the result dictionary to JSON
-                            string json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						if (reader.Read())
+						{
+							for (int i = 0; i < reader.FieldCount; i++)
+							{
+								result.Add(reader.GetName(i), reader.GetValue(i));
+							}
 
-                            // Set content type to JSON
-                            HttpContext.Current.Response.ContentType = "application/json";
+							// Use Newtonsoft.Json to serialize the result dictionary to JSON
+							string json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
 
-                            // Write the JSON string directly to the response
-                            HttpContext.Current.Response.Write(json);
-                        }
-                        else
-                        {
-                            HttpContext.Current.Response.Write("not found");
-                        }
-                    }
-                }
-            }
-        }
+							// Set content type to JSON
+							HttpContext.Current.Response.ContentType = "application/json";
 
-    }
+							// Write the JSON string directly to the response
+							HttpContext.Current.Response.Write(json);
+						}
+						else
+						{
+							HttpContext.Current.Response.Write("not found");
+						}
+					}
+				}
+			}
+		}
+		[WebMethod]
+		public void insertUser(string email, string password)
+		{
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				connection.Open();
+
+				string query = "insert";
+
+				using (SqlCommand command = new SqlCommand(query, connection))
+				{
+				}
+			}
+		}
+
+	}
 }
