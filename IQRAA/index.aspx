@@ -47,17 +47,18 @@
 
 
             <!-------------------------------------------Login Form--------------------------------------------------->
-            <div class="form-popup" id="login_form">
+            <div class="form-popup" id="login_div" style="display: none;">
                 <form id="login_form" class="form-container">
                     <center>
                         <h1 style="font-weight: bold; font-size: 50px;">Login</h1>
                     </center>
 
-                    <label for="email" style="padding-left: 5px; font-size: 20px;"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" required />
+                    <label for="login_email" style="padding-left: 5px; font-size: 20px;"><b>Email</b></label>
+                    <input type="text" placeholder="Enter Email" name="login_email" required />
 
-                    <label for="psw" style="padding-left: 5px; font-size: 20px;"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required />
+                    <label for="login_psw" style="padding-left: 5px; font-size: 20px;"><b>Password</b></label>
+                    <input type="password" id="login_psw" placeholder="Enter Password" style="margin-bottom: 4px" name="login_psw" required />
+                    <a class="show_password_a" onclick="show_hide_password('login_psw')">show password</a>
 
                     <button type="submit" class="primary_btn">Login</button>
                     <button type="submit" class="secondary_btn" onclick="open_signup()">Sign up</button>
@@ -67,36 +68,36 @@
             <!-------------------------------------------Login Form--------------------------------------------------->
 
             <!-------------------------------------------Sign-up Form--------------------------------------------------->
-            <div class="form-popup" id="signup_form">
+            <div class="form-popup" id="signup_div" style="display: none;">
                 <form id="signup_form" class="form-container" runat="server">
                     <center>
                         <h1 style="font-weight: bold; font-size: 50px;">Sign up</h1>
                     </center>
 
-                    <label for="email" style="padding-left: 5px; font-size: 20px;"><b>Email</b></label>
-                    <!--<input type="text" runat="server" id="email" placeholder="Enter Email" name="email" required />-->
-                    <asp:TextBox ID="txt_email" runat="server" placeholder="Enter Email"></asp:TextBox>
+                    <label style="padding-left: 5px; font-size: 20px;"><b>Email</b></label>
+                    <asp:TextBox ID="txt_email" runat="server" placeholder="Enter Email" required></asp:TextBox>
 
-                    <label for="psw" style="padding-left: 5px; font-size: 20px;"><b>Password</b></label>
-                    <asp:TextBox ID="txt_psw" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
-                    <!--<input type="password" placeholder="Enter Password" id="psw" name="psw" style="margin-bottom: 4px" required />
-                    <a class="show_password_a" onclick="show_hide_password('psw')">show password</a><br />-->
+                    <label style="padding-left: 5px; font-size: 20px;"><b>Password</b></label>
+                    <asp:TextBox ID="txt_psw" runat="server" TextMode="Password" placeholder="Password" Style="margin-bottom: 4px" required></asp:TextBox>
+                    <a class="show_password_a" onclick="show_hide_password('txt_psw')">show password</a>
 
-                    <label for="cpsw" style="padding-left: 5px; font-size: 20px;"><b>Confirm Password</b></label>
-                    <asp:TextBox ID="txt_cpsw" runat="server" TextMode="Password" placeholder="Confirm Password"></asp:TextBox>
-                    <!--<input type="password" placeholder="Confirm Password" id="cpsw" name="cpsw" style="margin-bottom: 4px" required />
+                    <label style="padding-left: 5px; font-size: 20px;"><b>Confirm Password</b></label>
+                    <asp:TextBox ID="txt_cpsw" runat="server" TextMode="Password" placeholder="Confirm Password" Style="margin-bottom: 4px" required></asp:TextBox>
+                    <a class="show_password_a" onclick="show_hide_password('txt_cpsw')">show password</a>
 
-                    <a class="show_password_a" onclick="show_hide_password('cpsw')">show password</a>-->
 
-                    
-                    
 
-                    <!--<button type="submit" class="primary_btn">Sign up</button>-->
-                    <asp:Button ID="Button1" class="primary_btn" runat="server" Text="Sign up" OnClick="insertUser"/>
-                    <button type="submit" class="secondary_btn" onclick="open_login()">login</button>
-                    <button type="button" class="secondary_btn cancel" onclick="close_signup()">Close</button>
+                    <span id="no_match_psw" style="display: none; color: white;"></span>
+                    <asp:Label ID="lbl_err" runat="server" ForeColor="White"></asp:Label>
+                    <asp:Button ID="btn_signup" class="primary_btn" runat="server" Text="Sign up" OnClientClick="return validate_password();" OnClick="insertUser"/>
+                    <asp:Button ID="btn_open_login" class="secondary_btn" runat="server" Text="login" OnClientClick="open_login();return false;" />
+                    <asp:Button ID="btn_close_signup" class="secondary_btn cancel" runat="server" Text="Close" OnClientClick="close_signup();return false;" />
 
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:IQRAA_dbConnectionString %>' SelectCommand="SELECT [email], [password] FROM [Users]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:IQRAA_dbConnectionString %>'>
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="txt_email" Name="Email" PropertyName="Text" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </form>
             </div>
             <!-------------------------------------------Sign-up Form--------------------------------------------------->
@@ -202,7 +203,6 @@
     <!--<script rel="javascript" type="text/javascript" src="../scripts/BookLists.js" defer></script>-->
     <form id="form1">
         <div>
-            
         </div>
     </form>
 </body>
