@@ -15,7 +15,7 @@ namespace IQRAA
 
 		}
 
-		protected void insertUser(object sender, EventArgs e)
+		protected void SignUptUser(object sender, EventArgs e)
 		{
 			SqlDataSource1.SelectCommandType = SqlDataSourceCommandType.Text;
 			SqlDataSource1.SelectCommand = "SELECT email FROM Users WHERE email = @Email";
@@ -37,6 +37,9 @@ namespace IQRAA
 
 					txt_email.Text = "";
 					txt_psw.Text = "";
+					
+					Response.Redirect("~/pages/UserProfile.aspx");
+					
 				}
 			}
 			

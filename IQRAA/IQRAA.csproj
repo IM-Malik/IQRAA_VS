@@ -167,10 +167,12 @@
     <Content Include="pages\Book.html" />
     <Content Include="pages\BookList2.aspx" />
     <Content Include="pages\BookLists.aspx" />
-    <Content Include="pages\UserProfile.html" />
+    <Content Include="pages\UserProfile.aspx" />
+    <Content Include="pages\UserProfile1.aspx" />
     <Content Include="pages\WebForm1.aspx" />
     <Content Include="scripts\BookLists.js" />
     <Content Include="scripts\index.js" />
+    <Content Include="scripts\UserProfile.js" />
     <Content Include="Site.Master" />
     <Content Include="styles\Book.css" />
     <Content Include="styles\BookList.css" />
@@ -207,6 +209,13 @@
     </Compile>
     <Compile Include="pages\BookList2.aspx.designer.cs">
       <DependentUpon>BookList2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="scripts\Book.cs" />
     <Compile Include="Contact.aspx.cs">

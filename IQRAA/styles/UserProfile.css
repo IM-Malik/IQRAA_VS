@@ -19,22 +19,25 @@ img {
     padding: 5px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: large;
-    &::placeholder {
+    cursor: auto;
+    height: 20px;
+}
+
+    .textBox::placeholder {
         color: #ffffff6d;
     }
-    cursor: auto;
-}
 
 .username {
     width: 150px;
-    height: 20px;
     margin: 0px;
 }
 
 .email {
     width: 300px;
-    height: 20px;
-    
+}
+
+.phone_number {
+    width: 200px;
 }
 
 .hash {
@@ -53,13 +56,12 @@ img {
     text-decoration: none;
     color: #6A994E;
     font-weight: 450;
-
-    &:visited {
-        text-decoration: none;
-        direction: none;
-    }
-    
+    cursor: pointer;
 }
+    .edit:visited {
+        text-decoration: none;
+        decoration: none;
+    }
 
 .bioArea {
     width: 400px;

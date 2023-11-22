@@ -57,7 +57,8 @@
                     <input type="text" placeholder="Enter Email" name="login_email" required />
 
                     <label for="login_psw" style="padding-left: 5px; font-size: 20px;"><b>Password</b></label>
-                    <input type="password" id="login_psw" placeholder="Enter Password" style="margin-bottom: 4px" name="login_psw" required />
+                    <input type="password" id="login_psw" placeholder="Enter Password" style="margin-bottom: 4px" 
+                        name="login_psw" required />
                     <a class="show_password_a" onclick="show_hide_password('login_psw')">show password</a>
 
                     <button type="submit" class="primary_btn">Login</button>
@@ -78,22 +79,30 @@
                     <asp:TextBox ID="txt_email" runat="server" placeholder="Enter Email" required></asp:TextBox>
 
                     <label style="padding-left: 5px; font-size: 20px;"><b>Password</b></label>
-                    <asp:TextBox ID="txt_psw" runat="server" TextMode="Password" placeholder="Password" Style="margin-bottom: 4px" required></asp:TextBox>
+                    <asp:TextBox ID="txt_psw" runat="server" TextMode="Password" placeholder="Password" 
+                        Style="margin-bottom: 4px" required></asp:TextBox>
                     <a class="show_password_a" onclick="show_hide_password('txt_psw')">show password</a>
 
                     <label style="padding-left: 5px; font-size: 20px;"><b>Confirm Password</b></label>
-                    <asp:TextBox ID="txt_cpsw" runat="server" TextMode="Password" placeholder="Confirm Password" Style="margin-bottom: 4px" required></asp:TextBox>
+                    <asp:TextBox ID="txt_cpsw" runat="server" TextMode="Password" placeholder="Confirm Password" 
+                        Style="margin-bottom: 4px" required></asp:TextBox>
                     <a class="show_password_a" onclick="show_hide_password('txt_cpsw')">show password</a>
 
 
 
                     <span id="no_match_psw" style="display: none; color: white;"></span>
                     <asp:Label ID="lbl_err" runat="server" ForeColor="White"></asp:Label>
-                    <asp:Button ID="btn_signup" class="primary_btn" runat="server" Text="Sign up" OnClientClick="return validate_password();" OnClick="insertUser"/>
-                    <asp:Button ID="btn_open_login" class="secondary_btn" runat="server" Text="login" OnClientClick="open_login();return false;" />
-                    <asp:Button ID="btn_close_signup" class="secondary_btn cancel" runat="server" Text="Close" OnClientClick="close_signup();return false;" />
 
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:IQRAA_dbConnectionString %>'>
+                    <asp:Button ID="btn_signup" class="primary_btn" runat="server" 
+                        Text="Sign up" OnClientClick="return validate_password();" OnClick="SignUptUser"/>
+
+                    <asp:Button ID="btn_open_login" class="secondary_btn" runat="server" Text="login" 
+                        OnClientClick="open_login();return false;" />
+                    <asp:Button ID="btn_close_signup" class="secondary_btn cancel" runat="server" Text="Close" 
+                        OnClientClick="close_signup();return false;" />
+
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                        ConnectionString='<%$ ConnectionStrings:IQRAA_dbConnectionString %>'>
                         <SelectParameters>
                             <asp:ControlParameter ControlID="txt_email" Name="Email" PropertyName="Text" />
                         </SelectParameters>
