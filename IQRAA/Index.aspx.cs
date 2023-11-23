@@ -57,10 +57,6 @@ namespace IQRAA
                     try
                     {
                         Session["email_session"] = txt_email.Text;
-                     
-
-
-
                     }
                     catch (Exception ex)
                     {
@@ -69,9 +65,6 @@ namespace IQRAA
                     }
                     txt_email.Text = "";
                     txt_psw.Text = "";
-
-
-
                     Response.Redirect("~/pages/UserProfile.aspx");
 
                 }
