@@ -35,8 +35,18 @@
 
         <center>
             <div class="picCircle">
-                <img src="media/images/Book100px.png" alt="" />
+                <asp:Image ID="ProfilePicture" runat="server" />
             </div>
+             <div>  
+            <p>Browse to Upload Image</p>  
+            <asp:FileUpload ID="ImageUpload" runat="server" />  
+        </div>  
+        <p>  
+            <asp:Button ID="ImageUploadButton" runat="server" Text="Upload Image" OnClick="ImageUploadButton_Click" />  
+        </p>  
+             <p>  
+        <asp:Label runat="server" ID="FileUploadStatus"></asp:Label>  
+    </p>  
         </center>
 
         <center>
@@ -74,6 +84,7 @@
                 <asp:ControlParameter ControlID="username" Name="Username" PropertyName="Text" />
                 <asp:ControlParameter ControlID="phone_num" Name="Phone_Numbe" />
                 <asp:ControlParameter ControlID="bio" Name="Bio" PropertyName="Text" />
+                <asp:ControlParameter ControlID="ImageUpload" Name="Image" />
             </UpdateParameters>
         </asp:SqlDataSource>
     </form>

@@ -53,7 +53,17 @@ namespace IQRAA.pages
 							bio.Text = dv[0]["bio"].ToString();
 						}
 					}
-				}
+                    if (dv[0]["image"]!=DBNull.Value)
+                    {
+                        ProfilePicture.ImageUrl = dv[0]["image"].ToString();
+                    }
+                    else
+                    {
+                        // Set a default image if the imagePath is empty or null
+                        ProfilePicture.ImageUrl = "media/images/default-image.png"; // Replace with your default image path
+                    }
+                    //media/images/Book100px.png
+                }
 			}
 		}
 		protected void update_profile(object sender, EventArgs e)
@@ -76,6 +86,42 @@ namespace IQRAA.pages
 
 			SqlDataSource1.Update();
 
-		}
-	}
+        }
+        protected void ImageUploadButton_Click(object sender, EventArgs e)
+        {
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+
+            if ((ImageUpload.PostedFile != null) && (ImageUpload.PostedFile.ContentLength > 0))
+            {
+                string fn = System.IO.Path.GetFileName(ImageUpload.PostedFile.FileName);
+                string SaveLocation = "upload\\" + fn;
+				string SaveAsLocation = Server.MapPath("upload") + "\\" + fn;
+                try
+                {
+                    ImageUpload.PostedFile.SaveAs(SaveAsLocation);
+                    FileUploadStatus.Text = "The image has been uploaded.";
+                }
+                catch (Exception ex)
+                {
+                    FileUploadStatus.Text = "Error: " + ex.Message;
+				}
+				try
+				{
+                    SqlDataSource1.UpdateCommand = "UPDATE Users SET image = @ImageTest WHERE (user_id = 2)";
+                    SqlDataSource1.UpdateParameters.Add("ImageTest", DbType.String, SaveLocation);
+                    SqlDataSource1.Update();
+					ProfilePicture.ImageUrl = SaveLocation;
+                }
+                catch (Exception ex)
+				{
+					FileUploadStatus.Text = "Error: " + ex.Message;
+
+                }
+            }
+            else
+            {
+                FileUploadStatus.Text = "Please select a image to upload.";
+            }
+        }
+    }
 }
