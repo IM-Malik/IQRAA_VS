@@ -85,6 +85,8 @@
                 <asp:ControlParameter ControlID="phone_num" Name="Phone_Numbe" />
                 <asp:ControlParameter ControlID="bio" Name="Bio" PropertyName="Text" />
                 <asp:ControlParameter ControlID="ImageUpload" Name="Image" />
+                <asp:ControlParameter ControlID="email" Name="Email" PropertyName="Text" />
+
             </UpdateParameters>
         </asp:SqlDataSource>
     </form>

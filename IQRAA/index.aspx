@@ -88,7 +88,7 @@
                         Style="margin-bottom: 4px" required></asp:TextBox>
                     <a class="show_password_a" onclick="show_hide_password('txt_cpsw')">show password</a>
 
-
+                    
 
                     <span id="no_match_psw" style="display: none; color: white;"></span>
                     <asp:Label ID="lbl_err" runat="server" ForeColor="White"></asp:Label>

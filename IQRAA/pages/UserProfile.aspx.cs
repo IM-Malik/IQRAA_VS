@@ -9,51 +9,70 @@ using System.Web.UI.WebControls;
 
 namespace IQRAA.pages
 {
-	public partial class UserProfile : System.Web.UI.Page
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
-			SqlDataSource1.SelectCommandType = SqlDataSourceCommandType.Text;
-			SqlDataSource1.SelectCommand = "SELECT username, phone_number, email, image, user_id, bio FROM Users WHERE user_id = 2";//id = 1 is for testing purposes
-			DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
-			if (dv != null)
-			{
-				if (dv.Count > 0)
-				{
-					email.Text = dv[0]["email"].ToString();
-					generated_id.Text = dv[0]["user_id"].ToString();
-					//bio.Text = dv[0]["bio"].ToString();
-					if (username.Text == "" && phone_num.Text == "")
-					{
-						if (dv[0]["username"] != DBNull.Value && dv[0]["phone_number"] != DBNull.Value)
-						{
-							phone_num.Text = dv[0]["phone_number"].ToString();
-							username.Text = dv[0]["username"].ToString();
-						}
-					}
-					else if (username.Text != "" && phone_num.Text == "")
-					{
+    public partial class UserProfile : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            string A = null;
+            if (!IsPostBack)
+            {
+                Session.Timeout = 1;
+                if (Request.Cookies["user_email"] != null)
+                {
+                    A = Request.Cookies["user_email"].Value.ToString();
+                    if (A.IsNullOrWhiteSpace())
+                        email.Text = "error";
+                }
+                if (Session["email_session"] == null)
+                {
+                    Response.Redirect("../Index.aspx?Err=Please Sign Up");
 
-						if (dv[0]["phone_number"] != DBNull.Value)
-						{
-							phone_num.Text = dv[0]["phone_number"].ToString();
-						}
-					}
-					else if (username.Text == "" && phone_num.Text != "")
-					{
-						if (dv[0]["username"] != DBNull.Value)
-						{
-							username.Text = dv[0]["username"].ToString();
-						}
-					}
-					if (bio.Text == "")
-					{
-						if (dv[0]["bio"] != DBNull.Value)
-						{
-							bio.Text = dv[0]["bio"].ToString();
-						}
-					}
-                    if (dv[0]["image"]!=DBNull.Value)
+                }
+            }
+
+
+            SqlDataSource1.SelectCommandType = SqlDataSourceCommandType.Text;
+            SqlDataSource1.SelectCommand = "SELECT username, phone_number, email, image, user_id, bio FROM Users WHERE email = @USEREMAIL";
+            SqlDataSource1.SelectParameters.Add("USEREMAIL", DbType.String, A);
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+            if (dv != null)
+            {
+                if (dv.Count > 0)
+                {
+                    email.Text = dv[0]["email"].ToString();
+                    generated_id.Text = dv[0]["user_id"].ToString();
+                    //bio.Text = dv[0]["bio"].ToString();
+                    if (username.Text == "" && phone_num.Text == "")
+                    {
+                        if (dv[0]["username"] != DBNull.Value && dv[0]["phone_number"] != DBNull.Value)
+                        {
+                            phone_num.Text = dv[0]["phone_number"].ToString();
+                            username.Text = dv[0]["username"].ToString();
+                        }
+                    }
+                    else if (username.Text != "" && phone_num.Text == "")
+                    {
+
+                        if (dv[0]["phone_number"] != DBNull.Value)
+                        {
+                            phone_num.Text = dv[0]["phone_number"].ToString();
+                        }
+                    }
+                    else if (username.Text == "" && phone_num.Text != "")
+                    {
+                        if (dv[0]["username"] != DBNull.Value)
+                        {
+                            username.Text = dv[0]["username"].ToString();
+                        }
+                    }
+                    if (bio.Text == "")
+                    {
+                        if (dv[0]["bio"] != DBNull.Value)
+                        {
+                            bio.Text = dv[0]["bio"].ToString();
+                        }
+                    }
+                    if (dv[0]["image"] != DBNull.Value)
                     {
                         ProfilePicture.ImageUrl = dv[0]["image"].ToString();
                     }
@@ -64,27 +83,27 @@ namespace IQRAA.pages
                     }
                     //media/images/Book100px.png
                 }
-			}
-		}
-		protected void update_profile(object sender, EventArgs e)
-		{
-			DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
-			SqlDataSource1.UpdateCommand = "UPDATE Users SET username = @Username, phone_number = @Phone_Numbe, bio = @Bio WHERE (user_id = 2)";
+            }
+        }
+        protected void update_profile(object sender, EventArgs e)
+        {
+            DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+            SqlDataSource1.UpdateCommand = "UPDATE Users SET username = @Username, phone_number = @Phone_Numbe, bio = @Bio WHERE (email = @Email)";
 
-			if (username.Text != "" && phone_num.Text == "")
-			{
-				SqlDataSource1.UpdateCommand = "UPDATE Users SET username = @Username WHERE user_id = 2";
-				SqlDataSource1.Update();
+            if (username.Text != "" && phone_num.Text == "")
+            {
+                SqlDataSource1.UpdateCommand = "UPDATE Users SET username = @Username WHERE (email = @Email)";
+                SqlDataSource1.Update();
 
-			}
-			else if (username.Text == "" && phone_num.Text != "")
-			{
-				SqlDataSource1.UpdateCommand = "UPDATE Users SET phone_number = @Phone_Number WHERE user_id = 2";
-				SqlDataSource1.Update();
+            }
+            else if (username.Text == "" && phone_num.Text != "")
+            {
+                SqlDataSource1.UpdateCommand = "UPDATE Users SET phone_number = @Phone_Number WHERE (email = @Email)";
+                SqlDataSource1.Update();
 
-			}
+            }
 
-			SqlDataSource1.Update();
+            SqlDataSource1.Update();
 
         }
         protected void ImageUploadButton_Click(object sender, EventArgs e)
@@ -95,7 +114,7 @@ namespace IQRAA.pages
             {
                 string fn = System.IO.Path.GetFileName(ImageUpload.PostedFile.FileName);
                 string SaveLocation = "upload\\" + fn;
-				string SaveAsLocation = Server.MapPath("upload") + "\\" + fn;
+                string SaveAsLocation = Server.MapPath("upload") + "\\" + fn;
                 try
                 {
                     ImageUpload.PostedFile.SaveAs(SaveAsLocation);
@@ -103,18 +122,18 @@ namespace IQRAA.pages
                 }
                 catch (Exception ex)
                 {
-                    FileUploadStatus.Text = "Error: " + ex.Message;
-				}
-				try
-				{
-                    SqlDataSource1.UpdateCommand = "UPDATE Users SET image = @ImageTest WHERE (user_id = 2)";
+                    FileUploadStatus.Text = "Error: " + ex.ToString();
+                }
+                try
+                {
+                    SqlDataSource1.UpdateCommand = "UPDATE Users SET image = @ImageTest WHERE email = @Email";
                     SqlDataSource1.UpdateParameters.Add("ImageTest", DbType.String, SaveLocation);
                     SqlDataSource1.Update();
-					ProfilePicture.ImageUrl = SaveLocation;
+                    ProfilePicture.ImageUrl = SaveLocation;
                 }
                 catch (Exception ex)
-				{
-					FileUploadStatus.Text = "Error: " + ex.Message;
+                {
+                    FileUploadStatus.Text = "Error: " + ex.Message;
 
                 }
             }
