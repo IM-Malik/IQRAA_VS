@@ -13,7 +13,7 @@ namespace IQRAA.pages
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			
+
 		}
 		protected void Add_to_List(string author, string isbn13, string pages)
 		{
@@ -71,13 +71,14 @@ namespace IQRAA.pages
 
 		protected void List_book_command(object source, EventArgs e)
 		{
-			
-				//Label lblISBN = (Label)e.Item.FindControl("author_C1");
-				//Label lblPages = (Label)e.Item.FindControl("ISBN_13_C1");
-				//Label lblAuthor = (Label)e.Item.FindControl("num_of_pages_C1");
+			if(((Button)source).ID == "Add_book1")
+			{
 				Add_to_List(author_C1.Text, ISBN_13_C1.Text, num_of_pages_C1.Text);
-				Response.Redirect("TempList.aspx");
-			
+			} else
+			{
+				Add_to_List(author_C2.Text, ISBN_13_C2.Text, num_of_pages_C2.Text);
+			}
+			Response.Redirect("TempList.aspx");
 		}
 
 		protected void Add_book1_Click(object sender, EventArgs e)

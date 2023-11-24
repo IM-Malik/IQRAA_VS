@@ -28,7 +28,7 @@
             <!-- Wrapper for slides -->
             <label for="trending" class="labels">Trending Books</label>
 
-
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             <div class="carousel-inner" id="trending">
                 <div class="item active">
                     <!-----------------------------------card 1----------------------------------------->
@@ -47,7 +47,8 @@
                                     <asp:Label ID="ISBN_13_C1" class="card-text text-muted" runat="server" Text="9781451673319"></asp:Label><br />
                                     <asp:Label ID="num_of_pages_C1" class="card-text text-muted" runat="server" Text="159 pages"></asp:Label>
                                     <br />
-                                    <asp:Button ID="Add_book" CommandName="ADD" runat="server" Text="+" OnClick="List_book_command" />
+                                    <asp:Button ID="Add_book1" CommandName="ADD" runat="server" Text="+" 
+                                        OnClick="List_book_command" />
                                 </div>
                             </div>
                         </div>
@@ -66,7 +67,8 @@
                                     <asp:Label ID="author_C2" style="padding-left: 30px;" class="card-text text-muted" runat="server" Text="Dan Brown"></asp:Label><br />
                                     <asp:Label ID="ISBN_13_C2" style="padding-left: 30px;" class="card-text text-muted" runat="server" Text="9780312944926"></asp:Label><br />
                                     <asp:Label ID="num_of_pages_C2" style="padding-left: 30px;" class="card-text text-muted" runat="server" Text="525 pages"></asp:Label><br />
-                                    <asp:Button ID="Add_book1" CommandName="ADD" runat="server" Text="+" Style="margin-left: 30px;" OnClick="List_book_command" />
+                                    <asp:Button ID="Add_book2" CommandName="ADD" runat="server" Text="+" 
+                                        Style="margin-left: 30px;" OnClick="List_book_command" />
                                 </div>
                             </div>
                         </div>
