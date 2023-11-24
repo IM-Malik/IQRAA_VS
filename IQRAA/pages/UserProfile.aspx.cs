@@ -20,8 +20,8 @@ namespace IQRAA.pages
                 if (Request.Cookies["user_email"] != null)
                 {
                     A = Request.Cookies["user_email"].Value.ToString();
-                    if (A.IsNullOrWhiteSpace())
-                        email.Text = "error";
+                    /*if (A.IsNullOrWhiteSpace())
+                        email.Text = "error";*/
                 }
                 if (Session["email_session"] == null)
                 {

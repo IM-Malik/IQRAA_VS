@@ -24,6 +24,42 @@ namespace IQRAA.pages
 		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
 		/// <summary>
+		/// lbl_add_err control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label lbl_add_err;
+
+		/// <summary>
+		/// author_C1 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label author_C1;
+
+		/// <summary>
+		/// ISBN_13_C1 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label ISBN_13_C1;
+
+		/// <summary>
+		/// num_of_pages_C1 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label num_of_pages_C1;
+
+		/// <summary>
 		/// Add_book control.
 		/// </summary>
 		/// <remarks>
@@ -31,6 +67,33 @@ namespace IQRAA.pages
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.Button Add_book;
+
+		/// <summary>
+		/// author_C2 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label author_C2;
+
+		/// <summary>
+		/// ISBN_13_C2 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label ISBN_13_C2;
+
+		/// <summary>
+		/// num_of_pages_C2 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label num_of_pages_C2;
 
 		/// <summary>
 		/// Add_book1 control.

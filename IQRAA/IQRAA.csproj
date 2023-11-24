@@ -168,6 +168,7 @@
     <Content Include="pages\BookList2.aspx" />
     <Content Include="pages\BookLists.aspx" />
     <Content Include="pages\TempBooks.aspx" />
+    <Content Include="pages\TempList.aspx" />
     <Content Include="pages\UserProfile.aspx" />
     <Content Include="pages\UserProfile1.aspx" />
     <Content Include="pages\WebForm1.aspx" />
@@ -217,6 +218,13 @@
     </Compile>
     <Compile Include="pages\TempBooks.aspx.designer.cs">
       <DependentUpon>TempBooks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\TempList.aspx.cs">
+      <DependentUpon>TempList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\TempList.aspx.designer.cs">
+      <DependentUpon>TempList.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\UserProfile.aspx.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
