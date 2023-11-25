@@ -13,9 +13,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:Label ID="lbl_author" Style="margin-left: 40px;" runat="server" Text="Label"></asp:Label><br />
-        <asp:Label ID="lbl_pages" Style="margin-left: 40px;" runat="server" Text="Label"></asp:Label><br />
-        <asp:Label ID="lbl_isbn13" Style="margin-left: 40px;" runat="server" Text="Label"></asp:Label><br />
+        
     </form>
 </body>
 </html>

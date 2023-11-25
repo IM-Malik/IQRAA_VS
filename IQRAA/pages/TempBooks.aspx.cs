@@ -26,6 +26,7 @@ namespace IQRAA.pages
 				dr["ISBN_13"] = isbn13;
 				dr["num_of_pages"] = pages;
 				dt.Rows.Add(dr);
+				
 			}
 			else
 			{
@@ -35,6 +36,7 @@ namespace IQRAA.pages
 				dr["ISBN_13"] = isbn13;
 				dr["num_of_pages"] = pages;
 				dt.Rows.Add(dr);
+				
 			}
 			Session["temp_list"] = dt;
 
@@ -53,32 +55,19 @@ namespace IQRAA.pages
 			dt.Columns.Add(num_of_pages);
 			return dt;
 		}
-		protected void CartCount()
-		{
-			if (Session["temp_list"] != null)
-			{
-				DataTable dt = (DataTable)Session["temp_list"];
-				if (dt != null)
-				{
-					lbl_add_err.Text = dt.Rows.Count + " : Items Added";
-				}
-			}
-			else
-			{
-				lbl_add_err.Text = "No Items Added";
-			}
-		}
 
 		protected void List_book_command(object source, EventArgs e)
 		{
 			if(((Button)source).ID == "Add_book1")
 			{
 				Add_to_List(author_C1.Text, ISBN_13_C1.Text, num_of_pages_C1.Text);
-			} else
+			} else if((((Button)source).ID == "Add_book2"))
 			{
 				Add_to_List(author_C2.Text, ISBN_13_C2.Text, num_of_pages_C2.Text);
+			} else if ((((Button)source).ID == "ViewList"))
+			{ 
+				Response.Redirect("TempList.aspx");
 			}
-			Response.Redirect("TempList.aspx");
 		}
 	}
 }

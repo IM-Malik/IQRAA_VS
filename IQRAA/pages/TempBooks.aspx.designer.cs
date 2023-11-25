@@ -33,15 +33,6 @@ namespace IQRAA.pages
 		protected global::System.Web.UI.WebControls.Label lbl_add_err;
 
 		/// <summary>
-		/// Label1 control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label1;
-
-		/// <summary>
 		/// author_C1 control.
 		/// </summary>
 		/// <remarks>
@@ -112,6 +103,15 @@ namespace IQRAA.pages
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.Button Add_book2;
+
+		/// <summary>
+		/// ViewList control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button ViewList;
 
 		/// <summary>
 		/// SqlDataSource1 control.

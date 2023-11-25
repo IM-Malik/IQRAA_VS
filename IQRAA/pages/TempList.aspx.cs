@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace IQRAA.pages
@@ -18,7 +19,8 @@ namespace IQRAA.pages
 				if (Session["temp_list"] != null)
 				{
 					Bind();
-				} else if (Session["temp_list"] == null)
+				}
+				else if (Session["temp_list"] == null)
 				{
 					Response.Redirect("../Index.aspx?Err=no session available");
 				}
@@ -26,13 +28,36 @@ namespace IQRAA.pages
 		}
 		protected void Bind()
 		{
+			DataTable dt = (DataTable)Session["temp_list"];
 			if (Session["temp_list"] != null)
 			{
-				DataTable dt = (DataTable)Session["temp_list"];
-				lbl_author.Text = dt.Rows[0]["author"].ToString();
-				lbl_isbn13.Text = dt.Rows[0]["ISBN_13"].ToString();
-				lbl_pages.Text = dt.Rows[0]["num_of_pages"].ToString();
-			}	
+
+
+				for (int i = 0; i < dt.Rows.Count; i++)
+				{
+					HtmlGenericControl div = new HtmlGenericControl("div");
+					
+					TextBox textBoxAuthor = new TextBox();
+					textBoxAuthor.ID = "lbl_author" + i;
+					textBoxAuthor.Text = dt.Rows[i]["author"].ToString();
+
+					TextBox textBoxIsbn = new TextBox();
+					textBoxIsbn.ID = "lbl_isbn13" + i;
+					textBoxIsbn.Text = dt.Rows[i]["ISBN_13"].ToString();
+
+					TextBox textBoxPages = new TextBox();
+					textBoxPages.ID = "lbl_pages" + i;
+					textBoxPages.Text = dt.Rows[i]["num_of_pages"].ToString();
+
+					div.Controls.Add(textBoxAuthor);
+					div.Controls.Add(textBoxIsbn);
+					div.Controls.Add(textBoxPages);
+
+					form1.Controls.Add(div);
+				}
+			}
+
+
 		}
 	}
 }
