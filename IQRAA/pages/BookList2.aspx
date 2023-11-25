@@ -205,13 +205,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="bookISBN">Book ISBN</label>
-                        <input type="text" class="form-control" id="bookISBN" placeholder="Enter book ISBN">
+                        <input type="text" class="form-control" id="bookISBN" placeholder="Enter book ISBN"/>
                     </div>
 
                 </div>
                 <div class="form-group" id="book_progress_form">
                     <label for="bookProgress">Book Progress:</label>
-                    <input type="number" id="bookProgress" min="0" max="100" placeholder="0" onchange="getProgressValue()">
+                    <input type="number" id="bookProgress" min="0" max="100" placeholder="0" onchange="getProgressValue()"/>
                 </div>
 
 

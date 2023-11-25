@@ -244,7 +244,7 @@ function add_custom_carousel() {
 
 async function fetch_book(ISBN) {
     //const response = await fetch(`https://openlibrary.org/api/books?bibkeys=ISBN:${ISBN}&jscmd=data&format=json`)
-    const response = await fetch(`https://localhost:44313/WebService1.asmx/FetchBook?ISBN=9780312944926`);
+    const response = await fetch(`https://localhost:44313/WebService1.asmx/FetchBook?ISBN=${ISBN}`);
     //JSON.stringify(response);
 
     var responseJson = response.json();

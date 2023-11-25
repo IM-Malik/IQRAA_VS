@@ -80,10 +80,5 @@ namespace IQRAA.pages
 			}
 			Response.Redirect("TempList.aspx");
 		}
-
-		protected void Add_book1_Click(object sender, EventArgs e)
-		{
-
-		}
 	}
 }
