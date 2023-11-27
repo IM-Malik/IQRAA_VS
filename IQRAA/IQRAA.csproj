@@ -150,7 +150,6 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Index.aspx" />
-    <Content Include="indexold.aspx" />
     <Content Include="media\images\Book100px.png" />
     <Content Include="media\images\Book32px.png" />
     <Content Include="media\images\BookShelf.png" />
@@ -163,11 +162,13 @@
     <Content Include="media\images\vintage-crumpled-paper-Old-paper-texture-Graphics-28899497-1-1-580x387.jpeg" />
     <Content Include="pages\Book.html" />
     <Content Include="pages\BookList2.aspx" />
+    <Content Include="pages\BookSearch.aspx" />
     <Content Include="pages\TempBooks.aspx" />
     <Content Include="pages\TempList.aspx" />
     <Content Include="pages\UserProfile.aspx" />
     <Content Include="pages\WebForm1.aspx" />
     <Content Include="scripts\BookLists.js" />
+    <Content Include="scripts\BookSearch.js" />
     <Content Include="scripts\index.js" />
     <Content Include="scripts\TempList.js" />
     <Content Include="scripts\UserProfile.js" />
@@ -176,6 +177,7 @@
     <Content Include="styles\BookList.css" />
     <Content Include="styles\ContactUs.css" />
     <Content Include="styles\index.css" />
+    <Content Include="styles\BookSearch.css" />
     <Content Include="styles\UserProfile.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -200,6 +202,13 @@
     </Compile>
     <Compile Include="pages\BookList2.aspx.designer.cs">
       <DependentUpon>BookList2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\BookSearch.aspx.cs">
+      <DependentUpon>BookSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\BookSearch.aspx.designer.cs">
+      <DependentUpon>BookSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\TempBooks.aspx.cs">
       <DependentUpon>TempBooks.aspx</DependentUpon>

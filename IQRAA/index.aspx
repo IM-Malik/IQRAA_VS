@@ -9,7 +9,7 @@
     <title>IQRAA</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="styles/index.css" media="all" />
-    <script type="text/javascript" src="scripts/index.js" defer></script>
+    
     <link rel="icon" href="media/images/Book32px.png" />
     <link rel="stylesheet" type="text/css" href="styles/BookList.css" media="all" />
 </head>
@@ -123,10 +123,10 @@
 
                 <p id="textUnderLogo">IQRAA | اقرأ</p>
                 <div class="searchDiv">
-                    <form id="mainSearchBar">
-                        <input type="search" placeholder="Search" id="mainSearchBar" autofocus required>
+                    <form id="mainSearchBarF">
+                        <input type="search" placeholder="Search" id="mainSearchBar" autofocus required"/>
                         <center>
-                            <button class="searchBtn">Search</button>
+                            <button class="searchBtn" type="button" onclick="decider('mainSearchBar')">Search</button>
                             <button class="searchBtn">Random</button>
                         </center>
                     </form>

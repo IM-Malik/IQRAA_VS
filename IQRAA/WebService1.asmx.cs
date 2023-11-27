@@ -10,15 +10,9 @@ using System.Web.UI;
 
 namespace IQRAA
 {
-	/// <summary>
-	/// Summary description for WebService1
-	/// </summary>
 	[WebService(Namespace = "http://IQRAA_API.com/")]
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 	[System.ComponentModel.ToolboxItem(false)]
-
-	// To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-	// [System.Web.Script.Services.ScriptService]
 	public class WebService1 : System.Web.Services.WebService
 	{
 		private string connectionString =
@@ -45,10 +39,17 @@ namespace IQRAA
 
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
+				string query = "";
 				connection.Open();
-
-				string query = "SELECT book_id, ISBN_13, ISBN_10, title, url, author, num_of_pages, publish_date, cover_small, " +
-					"cover_medium, cover_large FROM Books WHERE ISBN_13 = @ISBN";
+				if (ISBN.Length == 13)
+				{
+					query = "SELECT book_id, ISBN_13, ISBN_10, title, url, author, num_of_pages, publish_date, cover_small, " +
+						"cover_medium, cover_large FROM Books WHERE ISBN_13 = @ISBN";
+				} else if (ISBN.Length == 10)
+				{
+					query = "SELECT book_id, ISBN_13, ISBN_10, title, url, author, num_of_pages, publish_date, cover_small, " +
+						"cover_medium, cover_large FROM Books WHERE ISBN_10 = @ISBN";
+				}
 
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
@@ -80,8 +81,57 @@ namespace IQRAA
 				}
 			}
 		}
+
 		[WebMethod]
-		public void insertUser(string email, string password)
+		public void FetchBooks_ByName(string book_name)
+		{
+			Dictionary<string, object> result = new Dictionary<string, object>();
+
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				connection.Open();
+
+				string query = "SELECT book_id, ISBN_13, ISBN_10, title, url, author, num_of_pages, publish_date, cover_small, " +
+					"cover_medium, cover_large FROM Books WHERE title LIKE @BookName";
+
+				using (SqlCommand command = new SqlCommand(query, connection))
+				{
+					command.Parameters.AddWithValue("@BookName", book_name);
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						if (reader.Read())
+						{
+							for (int i = 0; i < reader.FieldCount; i++)
+							{
+								result.Add(reader.GetName(i), reader.GetValue(i));
+							}
+
+							// Use Newtonsoft.Json to serialize the result dictionary to JSON
+							string json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+
+							// Set content type to JSON
+							HttpContext.Current.Response.ContentType = "application/json";
+
+							// Write the JSON string directly to the response
+							HttpContext.Current.Response.Write(json);
+						}
+						else
+						{
+							HttpContext.Current.Response.Write("not found");
+						}
+					}
+				}
+			}
+		}
+
+		[WebMethod]
+		public void FetchCommunities_ByName(string community_name)
+		{
+
+		}
+		[WebMethod]
+		public void login_user(string email, string password)
 		{
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
@@ -91,9 +141,12 @@ namespace IQRAA
 
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
+
 				}
 			}
 		}
+
+
 
 	}
 }

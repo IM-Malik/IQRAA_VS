@@ -42,3 +42,44 @@ function validate_password() {
     return true;
 
 }
+
+function decider(id) {
+    var value = document.getElementById(id).value;
+    console.log(parseInt(value));
+    if (!isNaN((parseInt(value)))) {
+        search_book_byISBN(value);
+    } else {
+        search_books_byName(value);
+    }
+    
+}
+
+async function search_books_byName(book_name) {
+    //var book_name = document.getElementById(id).value;
+    book_name = book_name.trim();
+    //console.log(book_name);
+    var arr_book_name = book_name.split(' ');
+    book_name = arr_book_name.join('+');
+    //console.log(book_name);
+    const response = await fetch(`https://localhost:44313/WebService1.asmx/FetchBooks_ByName?book_name=${book_name}`);
+    var responseJSON = response.json();
+    var awaitResJSON = await responseJSON;
+    console.log(awaitResJSON);
+    return awaitResJSON;
+}
+
+async function search_book_byISBN(ISBN) {
+    //var ISBN = Number(document.getElementById(id).value);
+    //console.log(typeof ISBN);
+    const response = await fetch(`https://localhost:44313/WebService1.asmx/FetchBook?ISBN=${ISBN}`);
+    //const response = await fetch(`https://openlibrary.org/api/books?bibkeys=ISBN:9780312944926&jscmd=data&format=json`);
+    var responseJSON = response.json();
+    var awaitResJSON = await responseJSON;
+
+    console.log(awaitResJSON);
+    return awaitResJSON;
+}
+
+function search_communities() {
+
+}
