@@ -1,20 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BookList.aspx.cs" Inherits="IQRAA.pages.BookList2" %>
 
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Lists</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../styles/index.css" media="all">
-    <link rel="stylesheet" type="text/css" href="../styles/BookList.css" media="all">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/index.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../styles/BookList.css" media="all" />
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/c#" src="../scripts/Book.cs" defer></script>
 
 </head>
-
 <body>
     <header class="navBar" onscroll="">
         <div id="menu">
@@ -31,8 +33,9 @@
         </div>
 
         <div id="searchBar">
-                <input type="search" placeholder="Search" id="navSearchBar">
-            </div>
+            <input type="search" placeholder="Search" id="navSearchBar">
+        </div>
+
 
 
         <div class="headerlinks" style="display: flex;">
@@ -175,10 +178,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                        <div class="form-group">
-                            <label for="listName">List Name</label>
-                            <input type="text" class="form-control" id="listName" placeholder="Enter list name">
-                        </div>
+                    <div class="form-group">
+                        <label for="listName">List Name</label>
+                        <input type="text" class="form-control" id="listName" placeholder="Enter list name">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="saveListName">Save</button>
@@ -200,16 +203,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                        <div class="form-group">
-                            <label for="bookISBN">Book ISBN</label>
-                    <!--<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>-->
-                            <input type="text" class="form-control" id="bookISBN" placeholder="Enter book ISBN">
-                        </div>
+                    <div class="form-group">
+                        <label for="bookISBN">Book ISBN</label>
+                        <input type="text" class="form-control" id="bookISBN" placeholder="Enter book ISBN"/>
+                    </div>
 
                 </div>
                 <div class="form-group" id="book_progress_form">
                     <label for="bookProgress">Book Progress:</label>
-                    <input type="number" id="bookProgress" min="0" max="100" placeholder="0" onchange="getProgressValue()">
+                    <input type="number" id="bookProgress" min="0" max="100" placeholder="0" onchange="getProgressValue()"/>
                 </div>
 
 
@@ -228,21 +230,34 @@
             <div class="modal-content">
 
                 <div class="modal-body">
-                    <label for="bookProgressGreen">Book Progress:</label>
+                    <label for="bookProgressGreen">Book
                     <input type="number" id="bookProgressGreen" min="0" max="100" placeholder="0">
-                    <button type="button" class="btn btn-primary" id="saveProgressGreen">Save</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="sSave</button>
+                    <button type="button" class="btn btn-secondary" datClose</button>
 
 
                 </div>
             </div>
         </div>
-        <!--------------------------------edit book progress popup----------------------------------->
-        <code></code>
+    </div>
+    <!--------------------------------edit book progress popup----------------------------------->
 
-        <script rel="javascript" type="text/javascript" src="../scripts/BookLists.js" defer></script>
-        <script type="text/c#" src="../scripts/Book.cs" defer></script>
-        <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+
+    
+
+    <form id="HiddenForm" runat="server">
+
+        <asp:SqlDataSource ID="SqlDataSourceBook" runat="server"
+            ConnectionString="<%$ ConnectionStrings:IQRAA_dbConnectionString %>"
+            SelectCommand="SELECT book_id, ISBN_13, ISBN_10, title, url, author, num_of_pages, 
+            publish_date, cover_small, cover_medium, cover_large FROM Books"></asp:SqlDataSource>
+        
+    </form>
+
+    <code></code>
+
+    <script rel="javascript" type="text/javascript" src="../scripts/BookLists.js" defer></script>
+
+
 </body>
-
 </html>
