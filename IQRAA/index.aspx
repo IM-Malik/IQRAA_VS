@@ -7,9 +7,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IQRAA</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="styles/index.css" media="all" />
-    
     <link rel="icon" href="media/images/Book32px.png" />
     <link rel="stylesheet" type="text/css" href="styles/BookList.css" media="all" />
 </head>
@@ -54,14 +54,14 @@
                     </center>
 
                     <label for="login_email" style="padding-left: 5px; font-size: 20px;"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="login_email" required />
+                    <input type="text" id="login_email" placeholder="Enter Email" required />
 
                     <label for="login_psw" style="padding-left: 5px; font-size: 20px;"><b>Password</b></label>
                     <input type="password" id="login_psw" placeholder="Enter Password" style="margin-bottom: 4px" 
                         name="login_psw" required />
                     <a class="show_password_a" onclick="show_hide_password('login_psw')">show password</a>
 
-                    <button type="submit" class="primary_btn">Login</button>
+                    <button type="button" class="primary_btn" onclick="user_login()">Login</button>
                     <button type="submit" class="secondary_btn" onclick="open_signup()">Sign up</button>
                     <button type="button" class="secondary_btn cancel" onclick="close_login()">Close</button>
                 </form>
@@ -125,6 +125,15 @@
                 <div class="searchDiv">
                     <form id="mainSearchBarF">
                         <input type="search" placeholder="Search" id="mainSearchBar" autofocus required"/>
+                        <div class="dropdown">
+                          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Choose Search Type
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background:white;">
+                            <a class="dropdown-item" href="#" id="book_item" onclick="change('book_item')">Book</a>
+                            <a class="dropdown-item" href="#" id="community_item" onclick="change('community_item')">Community</a>
+                          </div>
+                        </div>
                         <center>
                             <button class="searchBtn" type="button" onclick="decider('mainSearchBar')">Search</button>
                             <button class="searchBtn">Random</button>
@@ -209,6 +218,7 @@
     </section>
 
     <script rel="javascript" type="text/javascript" src="scripts/index.js" defer></script>
+    <script rel="javascript" type="text/javascript" src="scripts/BookSearch.js" defer></script>
     <!--<script rel="javascript" type="text/javascript" src="../scripts/BookLists.js" defer></script>-->
     <form id="form1">
         <div>

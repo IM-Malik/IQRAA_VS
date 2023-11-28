@@ -43,43 +43,75 @@ function validate_password() {
 
 }
 
-function decider(id) {
-    var value = document.getElementById(id).value;
-    console.log(parseInt(value));
-    if (!isNaN((parseInt(value)))) {
-        search_book_byISBN(value);
-    } else {
-        search_books_byName(value);
-    }
+async function user_login() {
+    var email = document.getElementById("login_email").value;
+    var psw = document.getElementById("login_psw").value;
+    var userInfo_db = await fetch(`https://localhost:44313/WebService1.asmx/login_user?email=${email}`);
+    var userInfo_db_JSON = userInfo_db.json();
+    var await_userInfo_db = await userInfo_db_JSON;
+    console.log(await_userInfo_db);
     
 }
 
+function decider(id) {
+    var value = document.getElementById(id).value;
+    console.log(parseInt(value));
+    var list = document.getElementById("dropdownMenuButton");
+    if (list.innerHTML === "Book") {
+        if (!isNaN((parseInt(value)))) {
+            search_book_byISBN(value);
+        } else {
+            search_books_byName(value);
+        }
+    } else {
+        search_communities();
+    }
+
+}
+
 async function search_books_byName(book_name) {
-    //var book_name = document.getElementById(id).value;
     book_name = book_name.trim();
-    //console.log(book_name);
     var arr_book_name = book_name.split(' ');
     book_name = arr_book_name.join('+');
-    //console.log(book_name);
+
     const response = await fetch(`https://localhost:44313/WebService1.asmx/FetchBooks_ByName?book_name=${book_name}`);
+
     var responseJSON = response.json();
     var awaitResJSON = await responseJSON;
-    console.log(awaitResJSON);
+
+    create_bookSearch_card(awaitResJSON);
     return awaitResJSON;
 }
 
 async function search_book_byISBN(ISBN) {
-    //var ISBN = Number(document.getElementById(id).value);
-    //console.log(typeof ISBN);
+    ISBN = ISBN.trim();
+
     const response = await fetch(`https://localhost:44313/WebService1.asmx/FetchBook?ISBN=${ISBN}`);
-    //const response = await fetch(`https://openlibrary.org/api/books?bibkeys=ISBN:9780312944926&jscmd=data&format=json`);
+
     var responseJSON = response.json();
     var awaitResJSON = await responseJSON;
 
-    console.log(awaitResJSON);
+    create_bookSearch_card(awaitResJSON);
     return awaitResJSON;
 }
 
 function search_communities() {
 
+}
+function create_bookSearch_card(response) {
+    sessionStorage.setItem("ISBN13", response.ISBN_13);
+    sessionStorage.setItem("author", response.author);
+    sessionStorage.setItem("coverM", response.cover_medium);
+    sessionStorage.setItem("pages", response.num_of_pages);
+    sessionStorage.setItem("title", response.title);
+    window.open("../pages/BookSearch.aspx");
+}
+function change(id) {
+    var list = document.getElementById("dropdownMenuButton");
+    console.log(list);
+    if (id === 'book_item') {
+        list.innerHTML = "Book";
+    } else {
+        list.innerHTML = "Community";
+    }
 }

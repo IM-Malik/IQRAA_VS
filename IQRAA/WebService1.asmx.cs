@@ -45,7 +45,8 @@ namespace IQRAA
 				{
 					query = "SELECT book_id, ISBN_13, ISBN_10, title, url, author, num_of_pages, publish_date, cover_small, " +
 						"cover_medium, cover_large FROM Books WHERE ISBN_13 = @ISBN";
-				} else if (ISBN.Length == 10)
+				}
+				else if (ISBN.Length == 10)
 				{
 					query = "SELECT book_id, ISBN_13, ISBN_10, title, url, author, num_of_pages, publish_date, cover_small, " +
 						"cover_medium, cover_large FROM Books WHERE ISBN_10 = @ISBN";
@@ -131,17 +132,43 @@ namespace IQRAA
 
 		}
 		[WebMethod]
-		public void login_user(string email, string password)
+		public void login_user(string email)
 		{
+			Dictionary<string, object> result = new Dictionary<string, object>();
+
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
 				connection.Open();
 
-				string query = "insert";
+				string query = "SELECT user_id, username, email, phone_number, password, image, bio FROM Users WHERE email = @UserEmail";
 
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
+					command.Parameters.AddWithValue("@UserEmail", email);
 
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						if (reader.Read())
+						{
+							for (int i = 0; i < reader.FieldCount; i++)
+							{
+								result.Add(reader.GetName(i), reader.GetValue(i));
+							}
+
+							// Use Newtonsoft.Json to serialize the result dictionary to JSON
+							string json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+
+							// Set content type to JSON
+							HttpContext.Current.Response.ContentType = "application/json";
+
+							// Write the JSON string directly to the response
+							HttpContext.Current.Response.Write(json);
+						}
+						else
+						{
+							HttpContext.Current.Response.Write("not found");
+						}
+					}
 				}
 			}
 		}

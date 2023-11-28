@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace IQRAA
 {
@@ -39,9 +41,18 @@ namespace IQRAA
                     SqlDataSource1.InsertCommandType = SqlDataSourceCommandType.Text;
                     SqlDataSource1.InsertCommand = "INSERT INTO Users(password, email) VALUES (@Password, @Email)";
                     SqlDataSource1.InsertParameters.Add("Email", txt_email.Text);
-                    SqlDataSource1.InsertParameters.Add("Password", txt_psw.Text);
+                    string psw = txt_psw.Text;
+
+                    byte[] psw_bytes = Encoding.ASCII.GetBytes(psw);
+                    
+                    SHA256 mySHA256 = SHA256.Create();
+                    psw_bytes = mySHA256.ComputeHash(psw_bytes, 0, psw_bytes.Length);
+                    string hashed_psw = BitConverter.ToString(psw_bytes);
+                    
+
+					SqlDataSource1.InsertParameters.Add("Password", hashed_psw);
                     SqlDataSource1.Insert();
-                    try
+                    /*try
                     {
                         HttpCookie cookie = new HttpCookie("user_email");
                         cookie.Value = txt_email.Text;
@@ -62,7 +73,7 @@ namespace IQRAA
                     {
                         Console.WriteLine(ex.Message);
 
-                    }
+                    }*/
                     txt_email.Text = "";
                     txt_psw.Text = "";
                     Response.Redirect("~/pages/UserProfile.aspx");
