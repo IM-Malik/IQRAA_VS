@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -7,6 +8,10 @@ using System.Web;
 using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Text;
+using System.Net;
+using System.Security.Cryptography;
 
 namespace IQRAA
 {
@@ -132,8 +137,9 @@ namespace IQRAA
 
 		}
 		[WebMethod]
-		public void login_user(string email)
+		public void login_user(string email, string password)
 		{
+
 			Dictionary<string, object> result = new Dictionary<string, object>();
 
 			using (SqlConnection connection = new SqlConnection(connectionString))
@@ -154,8 +160,26 @@ namespace IQRAA
 							{
 								result.Add(reader.GetName(i), reader.GetValue(i));
 							}
+							/*string pass_db = result.ElementAt(4).Value.ToString();
+							byte[] psw_bytes = Encoding.ASCII.GetBytes(password);
 
-							// Use Newtonsoft.Json to serialize the result dictionary to JSON
+							SHA256 mySHA256 = SHA256.Create();
+							psw_bytes = mySHA256.ComputeHash(psw_bytes, 0, psw_bytes.Length);
+							string hashed_psw = BitConverter.ToString(psw_bytes);
+							if (pass_db.Equals(hashed_psw))
+							{*/
+							try
+							{
+								HttpContext context = HttpContext.Current;
+								HttpCookie cookie = new HttpCookie("user_email");
+								cookie.Value = email;
+								cookie.Expires = DateTime.Now.AddMinutes(1445);
+								context.Response.Cookies.Add(cookie);
+							}
+							catch (Exception ex)
+							{
+								Console.WriteLine(ex.Message);
+							}
 							string json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
 
 							// Set content type to JSON
@@ -163,10 +187,13 @@ namespace IQRAA
 
 							// Write the JSON string directly to the response
 							HttpContext.Current.Response.Write(json);
+							// Use Newtonsoft.Json to serialize the result dictionary to JSON
+
 						}
+						//}
 						else
 						{
-							HttpContext.Current.Response.Write("not found");
+							HttpContext.Current.Response.Write("not found, please sign up");
 						}
 					}
 				}

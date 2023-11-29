@@ -27,7 +27,7 @@ function add_book(carousel_id) {
             num_pages_span.innerHTML = num_of_pages;
             document.getElementById("book_progress_form").appendChild(num_pages_span);
 
-            //setTimeout(async function () {
+           
             var book_pic = book.cover_medium
             if (progressValue > num_of_pages) {
                 alert("The progress value cannot be greater than the number of pages");
@@ -56,7 +56,7 @@ function add_book(carousel_id) {
                     slide[0].appendChild(new_card);
                 }
             }
-            //}, 5000);
+            
 
 
 

@@ -46,11 +46,13 @@ function validate_password() {
 async function user_login() {
     var email = document.getElementById("login_email").value;
     var psw = document.getElementById("login_psw").value;
-    var userInfo_db = await fetch(`https://localhost:44313/WebService1.asmx/login_user?email=${email}`);
+    var userInfo_db = await fetch(`https://localhost:44313/WebService1.asmx/login_user?email=${email}&password=${psw}`);
     var userInfo_db_JSON = userInfo_db.json();
     var await_userInfo_db = await userInfo_db_JSON;
     console.log(await_userInfo_db);
-    
+    //here it should remove the login signup bottons
+
+
 }
 
 function decider(id) {
@@ -63,7 +65,7 @@ function decider(id) {
         } else {
             search_books_byName(value);
         }
-    } else {
+    } else if (list.innerHTML === "Community") {
         search_communities();
     }
 
@@ -108,10 +110,20 @@ function create_bookSearch_card(response) {
 }
 function change(id) {
     var list = document.getElementById("dropdownMenuButton");
+    var book_item = document.getElementById("book_item");
+    var community_item = document.getElementById("community_item");
     console.log(list);
     if (id === 'book_item') {
         list.innerHTML = "Book";
+        book_item.style.display = "none";
+        community_item.style.display = "block";
     } else {
         list.innerHTML = "Community";
+        book_item.style.display = "block";
+        community_item.style.display = "none";
     }
+}
+
+function login_before_booklist () {
+    
 }

@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IQRAA</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="styles/index.css" media="all" />
     <link rel="icon" href="media/images/Book32px.png" />
@@ -23,7 +23,7 @@
                     <img src="media/images/Book32px.png" id="navBarIcon" /></a>
                 <div id="menuOptions">
                     <ul style="display: flex; padding: 0; list-style-type: none;">
-                        <li><a class="menuBtn" href="pages/BookList2.aspx">Book List page</a></li>
+                        <li><a class="menuBtn" href="pages/BookList2.aspx" >Book List page</a></li>
                         <!--<li><a class="menuBtn" href="#contactUs">Contact us</a></li>-->
                     </ul>
                 </div>
@@ -35,10 +35,7 @@
                 </form>
             </div>
 
-            <div class="search-box">
-                <button class="btn-search"><i class="fas fa-search"></i></button>
-                <input type="text" class="input-search" placeholder="Type to Search..." />
-            </div>
+            
 
             <div class="headerlinks" style="display: flex;">
                 <button class="sign" id="signup" onclick="open_signup()">Sign up</button>
@@ -126,11 +123,11 @@
                     <form id="mainSearchBarF">
                         <input type="search" placeholder="Search" id="mainSearchBar" autofocus required"/>
                         <div class="dropdown">
-                          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            Choose Search Type
+                          <button class="stylee btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Book
                           </button>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background:white;">
-                            <a class="dropdown-item" href="#" id="book_item" onclick="change('book_item')">Book</a>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="drop_list" style="background:white;">
+                            <a class="dropdown-item" href="#" id="book_item" onclick="change('book_item')" style="display:none;">Book</a>
                             <a class="dropdown-item" href="#" id="community_item" onclick="change('community_item')">Community</a>
                           </div>
                         </div>

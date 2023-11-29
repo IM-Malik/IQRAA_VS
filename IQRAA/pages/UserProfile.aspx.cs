@@ -12,28 +12,22 @@ namespace IQRAA.pages
     public partial class UserProfile : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-            string A = null;
+        {;
+            string user_email = null;
             if (!IsPostBack)
             {
-                Session.Timeout = 1;
                 if (Request.Cookies["user_email"] != null)
                 {
-                    A = Request.Cookies["user_email"].Value.ToString();
-                    /*if (A.IsNullOrWhiteSpace())
-                        email.Text = "error";*/
+					HttpCookie cookie = Request.Cookies["user_email"];
+                    user_email = cookie.Value;
                 }
-                if (Session["email_session"] == null)
-                {
-                    Response.Redirect("../Index.aspx?Err=Please Sign Up");
-
-                }
+                
             }
 
 
             SqlDataSource1.SelectCommandType = SqlDataSourceCommandType.Text;
             SqlDataSource1.SelectCommand = "SELECT username, phone_number, email, image, user_id, bio FROM Users WHERE email = @USEREMAIL";
-            SqlDataSource1.SelectParameters.Add("USEREMAIL", DbType.String, A);
+            SqlDataSource1.SelectParameters.Add("USEREMAIL", DbType.String, user_email);
             DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
             if (dv != null)
             {

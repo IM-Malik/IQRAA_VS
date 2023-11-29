@@ -333,6 +333,14 @@ body {
         color: white;
     }
 
+.stylee {
+    background-color: #BC4749;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    border-radius: 12px;
+}
+
 .show_password_a {
     margin-left: 490px;
     color: #A7C957;
@@ -347,3 +355,4 @@ body {
         cursor: default;
         color: #87a346;
     }
+
