@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Security.Cryptography;
 using System.Text;
+using System.Security.Principal;
 
 namespace IQRAA
 {
@@ -15,15 +16,11 @@ namespace IQRAA
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (!IsPostBack)
-            {
-                if (Request["Err"] != null)
-                {
-                    lbl_err.Text = Request["Err"].ToString();
-                }
-
-            }
-        }
+			if (Request.Cookies["user_email"] != null)
+			{
+				HttpCookie cookie = Request.Cookies["user_email"];
+			}
+		}
 
         protected void SignUptUser(object sender, EventArgs e)
         {
@@ -44,14 +41,14 @@ namespace IQRAA
                     SqlDataSource1.InsertParameters.Add("Email", txt_email.Text);
                     string psw = txt_psw.Text;
 
-                   /* byte[] psw_bytes = Encoding.ASCII.GetBytes(psw);
+                   byte[] psw_bytes = Encoding.ASCII.GetBytes(psw);
                     
                     SHA256 mySHA256 = SHA256.Create();
                     psw_bytes = mySHA256.ComputeHash(psw_bytes, 0, psw_bytes.Length);
-                    string hashed_psw = BitConverter.ToString(psw_bytes);*/
+                    string hashed_psw = BitConverter.ToString(psw_bytes);
                     
 
-					SqlDataSource1.InsertParameters.Add("Password", psw);
+					SqlDataSource1.InsertParameters.Add("Password", hashed_psw);
                     SqlDataSource1.Insert();
                     try
                     {
@@ -79,7 +76,7 @@ namespace IQRAA
                     txt_email.Text = "";
                     txt_psw.Text = "";
                     Response.Redirect("~/pages/UserProfile.aspx");
-
+                    //Window
                 }
             }
 

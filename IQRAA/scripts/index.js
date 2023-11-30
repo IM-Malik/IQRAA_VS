@@ -46,10 +46,29 @@ function validate_password() {
 async function user_login() {
     var email = document.getElementById("login_email").value;
     var psw = document.getElementById("login_psw").value;
+    console.log(psw);
     var userInfo_db = await fetch(`https://localhost:44313/WebService1.asmx/login_user?email=${email}&password=${psw}`);
-    var userInfo_db_JSON = userInfo_db.json();
-    var await_userInfo_db = await userInfo_db_JSON;
-    console.log(await_userInfo_db);
+    console.log(userInfo_db.status);
+    var spanErr = document.getElementById("incrPass");
+    if (userInfo_db.status == 200) {
+        var userInfo_db_JSON = userInfo_db.json();
+        var await_userInfo_db = await userInfo_db_JSON;
+        spanErr.style.display = "none";
+
+        location.reload();
+    } else if (userInfo_db.status == 405) {
+        //wrong password
+        spanErr.style.display = "block";
+        spanErr.innerHTML = "incorrect password";
+    } else if (userInfo_db.status == 406) {
+        //user not found
+        spanErr.style.display = "block";
+        spanErr.innerHTML = "email not found, please sign up";
+    }
+
+
+    //self.location = "../pages/UserProfile.aspx";
+    //window.open("../pages/UserProfile.aspx")
     //here it should remove the login signup bottons
 
 
@@ -106,7 +125,8 @@ function create_bookSearch_card(response) {
     sessionStorage.setItem("coverM", response.cover_medium);
     sessionStorage.setItem("pages", response.num_of_pages);
     sessionStorage.setItem("title", response.title);
-    window.open("../pages/BookSearch.aspx");
+    self.location = "../pages/BookSearch.aspx";
+    //window.open("../pages/BookSearch.aspx");
 }
 function change(id) {
     var list = document.getElementById("dropdownMenuButton");
@@ -124,6 +144,29 @@ function change(id) {
     }
 }
 
-function login_before_booklist () {
-    
+function login_before_booklist() {
+
+}
+
+function get_cookie() {
+    var cookies = document.cookie;
+    if (cookies.length == 0) {
+        document.getElementById("signup").style.display = "block";
+        document.getElementById("login").style.display = "block";
+        document.getElementById("signout").style.display = "none";
+    } else {
+        document.getElementById("signup").style.display = "none";
+        document.getElementById("login").style.display = "none";
+        document.getElementById("signout").style.display = "block";
+        document.getElementById("user_profile_btn").style.display = "block";
+    }
+    if (window.location.href == "https://localhost:44313/Index?Err=Please%20Login%20or%20Sign%20up") {
+        document.getElementById("spanErr").style.display = "block";
+    }
+    console.log(cookies);
+}
+
+function signout() {
+    var singout = fetch(`https://localhost:44313/WebService1.asmx/sign_out`);
+    location.reload();
 }

@@ -160,47 +160,72 @@ namespace IQRAA
 							{
 								result.Add(reader.GetName(i), reader.GetValue(i));
 							}
-							/*string pass_db = result.ElementAt(4).Value.ToString();
+							string pass_db = result.ElementAt(4).Value.ToString();
 							byte[] psw_bytes = Encoding.ASCII.GetBytes(password);
 
 							SHA256 mySHA256 = SHA256.Create();
 							psw_bytes = mySHA256.ComputeHash(psw_bytes, 0, psw_bytes.Length);
 							string hashed_psw = BitConverter.ToString(psw_bytes);
 							if (pass_db.Equals(hashed_psw))
-							{*/
-							try
 							{
-								HttpContext context = HttpContext.Current;
-								HttpCookie cookie = new HttpCookie("user_email");
-								cookie.Value = email;
-								cookie.Expires = DateTime.Now.AddMinutes(1445);
-								context.Response.Cookies.Add(cookie);
-							}
-							catch (Exception ex)
+
+								try
+								{
+									HttpContext context = HttpContext.Current;
+									HttpCookie cookie = new HttpCookie("user_email");
+									cookie.Value = email;
+									cookie.Expires = DateTime.Now.AddMinutes(1445);
+									context.Response.Cookies.Add(cookie);
+									string json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+
+									// Set content type to JSON
+									HttpContext.Current.Response.ContentType = "application/json";
+
+									// Write the JSON string directly to the response
+									HttpContext.Current.Response.Write(json);
+									//Context.Response.Redirect("~/pages/UserProfile.aspx");
+								}
+								catch (Exception ex)
+								{
+									Console.WriteLine(ex.Message);
+								}
+								// Use Newtonsoft.Json to serialize the result dictionary to JSON
+
+							} else
 							{
-								Console.WriteLine(ex.Message);
+								HttpContext.Current.Response.StatusCode = 405;
+								HttpContext.Current.Response.Write("wrong password");
 							}
-							string json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-
-							// Set content type to JSON
-							HttpContext.Current.Response.ContentType = "application/json";
-
-							// Write the JSON string directly to the response
-							HttpContext.Current.Response.Write(json);
-							// Use Newtonsoft.Json to serialize the result dictionary to JSON
-
 						}
-						//}
 						else
 						{
+							HttpContext.Current.Response.StatusCode = 406;
 							HttpContext.Current.Response.Write("not found, please sign up");
 						}
 					}
 				}
 			}
 		}
+		[WebMethod]
+		public void sign_out()
+		{
+			try
+			{
+				HttpContext context = HttpContext.Current;
+				HttpCookie nameCookie = context.Request.Cookies["user_email"];
 
+				//Set the Expiry date to past date.  
+				nameCookie.Expires = DateTime.Now.AddDays(-1);
 
+				//Update the Cookie in Browser.  
+				context.Response.Cookies.Add(nameCookie);
 
+			}
+			catch (Exception ex) { 
+				Console.WriteLine(ex.Message);
+			}
+		}
 	}
+
 }
+

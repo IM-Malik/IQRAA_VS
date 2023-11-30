@@ -25,8 +25,7 @@ namespace IQRAA.pages
 			}
 			else
 			{
-				Response.Redirect("../Index.aspx");
-
+				Response.Redirect("../Index.aspx?Err=Please Login or Sign up");
 			}
 		}
 

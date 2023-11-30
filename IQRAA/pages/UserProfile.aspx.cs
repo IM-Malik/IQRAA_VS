@@ -35,6 +35,7 @@ namespace IQRAA.pages
                 {
                     email.Text = dv[0]["email"].ToString();
                     generated_id.Text = dv[0]["user_id"].ToString();
+
                     //bio.Text = dv[0]["bio"].ToString();
                     if (username.Text == "" && phone_num.Text == "")
                     {

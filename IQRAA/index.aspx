@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="styles/BookList.css" media="all" />
 </head>
 
-<body>
+<body onload="get_cookie()">
 
     <section id="hero">
         <header class="navBar" onscroll="">
@@ -23,9 +23,12 @@
                     <img src="media/images/Book32px.png" id="navBarIcon" /></a>
                 <div id="menuOptions">
                     <ul style="display: flex; padding: 0; list-style-type: none;">
-                        <li><a class="menuBtn" href="pages/BookList2.aspx" >Book List page</a></li>
+                        <li><a class="menuBtn" href="pages/BookList2.aspx">Book List Page</a></li>
+                        <li><a class="menuBtn" id="user_profile_btn" href="pages/UserProfile.aspx" style="display:none;">User Profile Page</a></li>
+                        <li><a class="menuBtn" id="signout" style="display:none;" onclick="signout()">Sign out</a></li>
                         <!--<li><a class="menuBtn" href="#contactUs">Contact us</a></li>-->
                     </ul>
+                    <span class="spanErrr" id="spanErr" style="color:#BC4749">you have to be logged in</span>
                 </div>
             </div>
 
@@ -56,6 +59,7 @@
                     <label for="login_psw" style="padding-left: 5px; font-size: 20px;"><b>Password</b></label>
                     <input type="password" id="login_psw" placeholder="Enter Password" style="margin-bottom: 4px" 
                         name="login_psw" required />
+                    <span class="spanErrr" id="incrPass" style="color:#F2E8CF"></span>
                     <a class="show_password_a" onclick="show_hide_password('login_psw')">show password</a>
 
                     <button type="button" class="primary_btn" onclick="user_login()">Login</button>
