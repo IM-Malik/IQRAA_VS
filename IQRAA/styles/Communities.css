@@ -1,0 +1,312 @@
+﻿#navBarIcon {
+    width: 50px;
+    height: 50px;
+}
+
+body {
+    background-color: #F2E8CF;
+    opacity: 1;
+    margin: 0;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 1%;
+    margin-bottom: 50px;
+}
+
+.sign {
+    background-color: #8b2c2e;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 100px;
+    height: 30px;
+    margin-top: 15px;
+    margin-left: 0;
+    margin-right: 0px;
+    margin-bottom: 15px;
+}
+
+#login {
+    background-color: #BC4749;
+    margin-left: -30px;
+}
+
+#signup {
+    position: relative;
+}
+
+.sign:hover,
+#login:hover {
+    background-color: #8b3536;
+}
+
+#hero {
+    padding-bottom: 366px;
+}
+
+.menuBtn {
+    color: white;
+    background-color: #BC4749;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 50px;
+    padding: 0;
+    padding: 7px;
+}
+
+.heroSection {
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+#navSearchBar {
+    width: 500px;
+    margin-right: 150px;
+}
+
+#navSearch {
+    color: white;
+    display: none;
+}
+
+#heroLogo {
+    width: 200px;
+}
+
+#textUnderLogo {
+    color: #BC4749;
+    font-size: 50px;
+    text-align: center;
+    margin: 0;
+    margin-top: -60px;
+    margin-bottom: 8px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#mainLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#mainSearchBar {
+    width: 800px;
+    height: 40px;
+    border-radius: 8px;
+    border-width: 3px;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: auto;
+    padding-left: 8px;
+}
+
+.searchBtn {
+    background-color: #BC4749;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    border-radius: 12px;
+    border: none;
+    width: 100px;
+    height: 30px;
+    margin-top: 15px;
+    margin-left: 0;
+    margin-right: 0px;
+}
+
+.searchDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.searchBtns {
+    align-self: center;
+}
+
+.searchBtn:hover {
+    background-color: #8b3536;
+}
+
+#menu {
+    display: flex;
+    align-items: center;
+}
+
+/*-----------------------------------------------------------*/
+
+#mainLogoImage {
+    width: 800px;
+    height: 300px;
+    background-image: url('../media/images/BookShelfMirrored.png'), url('../media/images/BookShelf.png');
+    background-size: 235px, 235px;
+    background-position: left, right;
+    background-repeat: no-repeat, no-repeat;
+    position: relative;
+}
+
+/*-----------------------------------------------------------*/
+.search-box {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+}
+
+.input-search {
+    height: 30px;
+    width: 0px;
+    border-style: none;
+    padding: 10px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    outline: none;
+    border-radius: 25px;
+    transition: all .5s ease-in-out;
+    background-color: #6A994E;
+    margin-right: 400px;
+    padding-right: 40px;
+    color: #fff;
+}
+
+    .input-search::placeholder {
+        color: rgba(255, 255, 255, .5);
+        font-size: 18px;
+        letter-spacing: 2px;
+        font-weight: 100;
+    }
+
+.btn-search {
+    width: 50px;
+    height: 50px;
+    border-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    right: 0px;
+    color: #ffffff;
+    background-color: transparent;
+    pointer-events: painted;
+}
+
+    .btn-search:focus ~ .input-search {
+        width: 300px;
+        border-radius: 0px;
+        background-color: #A7C957;
+        border-bottom: 1px solid rgba(255, 255, 255, .5);
+        transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+        border-radius: 15px;
+    }
+
+.input-search:focus {
+    width: 300px;
+    border-radius: 0px;
+    background-color: #6A994E;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+    border-radius: 15px;
+}
+
+/*-----------------------------------------------------------*/
+#menuList {
+    background-color: #BC4749;
+}
+
+.headerlinks li {
+    display: none;
+}
+
+.headerlinks:hover li {
+    display: block;
+}
+
+.menuListItem {
+    padding: 10px;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F2E8CF;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #BC4749;
+}
+
+/*-----------------------------------------------------------------*/
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 27%;
+    border: 3px solid black;
+    z-index: 1;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #BC4749;
+}
+
+/* Add styles to the form container */
+.form-container {
+    width: 600px;
+    height: 500px;
+    padding: 10px;
+    background-color: #BC4749;
+    color: black;
+}
+/* Add the following styles to your existing Communities.css file */
+
+.communityList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.communityCard {
+    width: 300px; /* Adjust as needed */
+    border: 1px solid #ddd; /* Add borders or styles as needed */
+    margin: 10px; /* Adjust spacing between community cards */
+    padding: 15px;
+}
+
+.communityTitle {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.communityMembers {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.joinButton {
+    background-color: #BC4749;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+
+
+
+

@@ -26,6 +26,7 @@
                         <li><a class="menuBtn" href="pages/BookList2.aspx">Book List Page</a></li>
                         <li><a class="menuBtn" id="user_profile_btn" href="pages/UserProfile.aspx" style="display:none;">User Profile Page</a></li>
                         <li><a class="menuBtn" id="signout" style="display:none;" onclick="signout()">Sign out</a></li>
+                        <li><a class="menuBtn" href="pages/Communities.aspx">Communities Page</a></li> 
                         <!--<li><a class="menuBtn" href="#contactUs">Contact us</a></li>-->
                     </ul>
                     <span class="spanErrr" id="spanErr" style="color:#BC4749">you have to be logged in</span>

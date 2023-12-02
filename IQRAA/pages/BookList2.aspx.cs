@@ -38,6 +38,7 @@ namespace IQRAA.pages
 				connection.Open();
 				string query = "SELECT Book_list_id, user_email, name, rank, progress FROM Book_list WHERE user_email = @Email";
 
+
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
 					command.Parameters.AddWithValue("@Email", user_email);

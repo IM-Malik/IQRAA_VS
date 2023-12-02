@@ -163,6 +163,7 @@
     <Content Include="pages\Book.html" />
     <Content Include="pages\BookList2.aspx" />
     <Content Include="pages\BookSearch.aspx" />
+    <Content Include="pages\Communities.aspx" />
     <Content Include="pages\TempBooks.aspx" />
     <Content Include="pages\TempList.aspx" />
     <Content Include="pages\UserProfile.aspx" />
@@ -170,11 +171,13 @@
     <Content Include="scripts\BookLists.js" />
     <Content Include="scripts\BookSearch.js" />
     <Content Include="scripts\index.js" />
+    <Content Include="scripts\Communities.js" />
     <Content Include="scripts\TempList.js" />
     <Content Include="scripts\UserProfile.js" />
     <Content Include="Site.Master" />
     <Content Include="styles\Book.css" />
     <Content Include="styles\BookList.css" />
+    <Content Include="styles\Communities.css" />
     <Content Include="styles\ContactUs.css" />
     <Content Include="styles\index.css" />
     <Content Include="styles\BookSearch.css" />
@@ -209,6 +212,13 @@
     </Compile>
     <Compile Include="pages\BookSearch.aspx.designer.cs">
       <DependentUpon>BookSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Communities.aspx.cs">
+      <DependentUpon>Communities.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Communities.aspx.designer.cs">
+      <DependentUpon>Communities.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\TempBooks.aspx.cs">
       <DependentUpon>TempBooks.aspx</DependentUpon>

@@ -150,7 +150,7 @@ function login_before_booklist() {
 
 function get_cookie() {
     var cookies = document.cookie;
-    if (cookies.length == 0) {
+    if (cookies.length == 0 || cookies == null) {
         document.getElementById("signup").style.display = "block";
         document.getElementById("login").style.display = "block";
         document.getElementById("signout").style.display = "none";
@@ -168,5 +168,6 @@ function get_cookie() {
 
 function signout() {
     var singout = fetch(`https://localhost:44313/WebService1.asmx/sign_out`);
+    get_cookie();
     location.reload();
 }
