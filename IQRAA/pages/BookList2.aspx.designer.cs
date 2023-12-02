@@ -11,25 +11,34 @@ namespace IQRAA.pages
 {
 
 
-	public partial class BookList2
-	{
+    public partial class BookList2
+    {
 
-		/// <summary>
-		/// HiddenForm control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlForm HiddenForm;
+        /// <summary>
+        /// hdnBookListData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnBookListData;
 
-		/// <summary>
-		/// SqlDataSourceBook control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceBook;
-	}
+        /// <summary>
+        /// HiddenForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm HiddenForm;
+
+        /// <summary>
+        /// SqlDataSourceBook control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceBook;
+    }
 }

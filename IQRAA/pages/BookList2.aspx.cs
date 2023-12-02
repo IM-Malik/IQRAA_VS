@@ -21,7 +21,7 @@ namespace IQRAA.pages
 			if (Request.Cookies["user_email"] != null)
 			{
 				HttpCookie cookie = Request.Cookies["user_email"];
-				Fetch_Book_list(cookie.Value);
+				Fetch_Book_lists(cookie.Value);
 			}
 			else
 			{
@@ -29,64 +29,61 @@ namespace IQRAA.pages
 			}
 		}
 
-		protected void Fetch_Book_list(string user_email)
-		{
-			Dictionary<string, object> result = new Dictionary<string, object>();
+       
+        protected void Fetch_Book_lists(string user_email)
+        {
+            List<Dictionary<string, object>> bookListsCollection = new List<Dictionary<string, object>>();
 
-			using (SqlConnection connection = new SqlConnection(connectionString))
-			{
-				connection.Open();
-				string query = "SELECT Book_list_id, user_email, name, rank, progress FROM Book_list WHERE user_email = @Email";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT Book_list_id, user_email, name, rank, progress FROM Book_list WHERE user_email = @Email";
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Email", user_email);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Dictionary<string, object> bookListInfo = new Dictionary<string, object>();
+                            bookListInfo.Add("Book_list_id", reader["Book_list_id"]);
+                            bookListInfo.Add("user_email", reader["user_email"]);
+                            bookListInfo.Add("name", reader["name"]);
+                            bookListInfo.Add("rank", reader["rank"]);
+                            bookListInfo.Add("progress", reader["progress"]);
+
+                            int bookListId = Convert.ToInt32(reader["Book_list_id"]);
+                            List<Dictionary<string, object>> booksCollection = new List<Dictionary<string, object>>();
+
+                            string query2 = "SELECT book_id, priority FROM Booklist_Books WHERE book_list_id = @ListId";
+                            using (SqlCommand cmd2 = new SqlCommand(query2, connection))
+                            {
+                                cmd2.Parameters.AddWithValue("@ListId", bookListId);
+
+                                using (SqlDataReader reader2 = cmd2.ExecuteReader())
+                                {
+                                    while (reader2.Read())
+                                    {
+                                        Dictionary<string, object> bookInfo = new Dictionary<string, object>();
+                                        bookInfo.Add("book_id", reader2["book_id"]);
+                                        bookInfo.Add("priority", reader2["priority"]);
+                                        booksCollection.Add(bookInfo);
+                                    }
+                                }
+                            }
+
+                            bookListInfo.Add("books", booksCollection);
+                            bookListsCollection.Add(bookListInfo);
+                        }
+                    }
+                }
+            }
+
+          
+        }
 
 
-				using (SqlCommand command = new SqlCommand(query, connection))
-				{
-					command.Parameters.AddWithValue("@Email", user_email);
-
-					using (SqlDataReader reader = command.ExecuteReader())
-					{
-						if (reader.Read())
-						{
-							for (int i = 0; i < reader.FieldCount; i++)
-							{
-								result.Add(reader.GetName(i), reader.GetValue(i));
-							}
-							reader.Close();
-							// Use Newtonsoft.Json to serialize the result dictionary to JSON
-							string json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-
-							// Set content type to JSON
-							HttpContext.Current.Response.ContentType = "application/json";
-
-							string books_in_Booklist = "SELECT book_list_id, book_id, priority FROM Booklist_Books WHERE book_list_id = @List_id";
-							SqlCommand cmd = new SqlCommand(books_in_Booklist, connection);
-							cmd.Parameters.AddWithValue("@List_id", 2/*result.ElementAt(0).Value*/);
-
-							SqlDataReader rdr = cmd.ExecuteReader();
-
-							var collection = new Dictionary<int, Dictionary<string, object>>();
-
-							int counter = 0;
-							while (rdr.Read())
-							{
-								collection[counter] = new Dictionary<string, object>();
-								for (int i = 1; i < rdr.FieldCount; i++)
-								{
-									collection[counter].Add(rdr.GetName(i), rdr.GetValue(i));
-
-								}
-								counter++;
-
-							}
-								Console.WriteLine(collection.ToString());
-
-							//HttpContext.Current.Response.Write("not found");
-
-						}
-					}
-				}
-			}
-		}
-
-	}
+    }
 }
