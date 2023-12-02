@@ -21,16 +21,19 @@ namespace IQRAA.pages
 			if (Request.Cookies["user_email"] != null)
 			{
 				HttpCookie cookie = Request.Cookies["user_email"];
-				Fetch_Book_lists(cookie.Value);
-			}
-			else
+				var bookLists = Fetch_Book_lists(cookie.Value);
+                var jsonBookListData = Newtonsoft.Json.JsonConvert.SerializeObject(bookLists);
+                hdnBookListData.Value = jsonBookListData;
+
+            }
+            else
 			{
 				Response.Redirect("../Index.aspx?Err=Please Login or Sign up");
 			}
 		}
 
        
-        protected void Fetch_Book_lists(string user_email)
+        protected List<Dictionary<string, object>> Fetch_Book_lists(string user_email)
         {
             List<Dictionary<string, object>> bookListsCollection = new List<Dictionary<string, object>>();
 
@@ -79,7 +82,7 @@ namespace IQRAA.pages
                         }
                     }
                 }
-            }
+            }return bookListsCollection;
 
           
         }

@@ -1,7 +1,8 @@
 var carouselIdCounter = 13;
 var addBookForm = ''
 var progressValue = 0;
-//var glo_book;
+var bookListsData = document.getElementById('hdnBookListData');
+
 async function openAddBookModal_fetchBook(ISBN) {
     return Promise.resolve().then(v => {
         return fetch_book(ISBN);

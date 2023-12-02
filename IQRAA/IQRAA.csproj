@@ -164,6 +164,7 @@
     <Content Include="pages\BookList2.aspx" />
     <Content Include="pages\BookSearch.aspx" />
     <Content Include="pages\Communities.aspx" />
+    <Content Include="pages\ContactUs.html" />
     <Content Include="pages\TempBooks.aspx" />
     <Content Include="pages\TempList.aspx" />
     <Content Include="pages\UserProfile.aspx" />

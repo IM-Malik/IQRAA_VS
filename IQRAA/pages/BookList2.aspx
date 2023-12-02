@@ -20,7 +20,7 @@
 <body>
     <header class="navBar" onscroll="">
         <div id="menu">
-            <!-- Default dropright button -->
+           
             <div class="btn-group">
                 <button type="button" class="btn btn-primary dropdown-toggle btn-lg" data-toggle="dropdown">
                     Menu
@@ -32,16 +32,10 @@
             </div>
         </div>
 
-        <div id="searchBar">
-            <input type="search" placeholder="Search" id="navSearchBar">
-        </div>
+      
 
 
-
-        <div class="headerlinks" style="display: flex;">
-            <button class="sign" id="signup">Sign up</button>
-            <button class="sign" id="login">Log in</button>
-        </div>
+       
     </header>
 
     <!------------------------------------Currently Reading---------------------------------------------->
@@ -246,6 +240,7 @@
     
 
     <form id="HiddenForm" runat="server">
+      <asp:HiddenField ID="hdnBookListData" runat="server" ClientIDMode="Static" />
 
         <asp:SqlDataSource ID="SqlDataSourceBook" runat="server"
             ConnectionString="<%$ ConnectionStrings:IQRAA_dbConnectionString %>"

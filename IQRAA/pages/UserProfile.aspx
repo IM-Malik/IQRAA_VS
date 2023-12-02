@@ -16,19 +16,16 @@
 
         <div id="menu">
             <a href="#hero">
-                <img src="media/images/Book32px.png" id="navBarIcon" /></a>
+                <img src="../media/images/Book32px.png" id="navBarIcon" /></a>
             <div id="menuOptions">
                 <ul style="display: flex; padding: 0; list-style-type: none;">
                     <li><a class="menuBtn" href="#">About</a></li>
-                    <li><a class="menuBtn" href="#contactUs">Contact us</a></li>
+                    <li><a class="menuBtn" href="ContactUs.html">Contact us</a></li>
                 </ul>
             </div>
         </div>
 
-        <div class="headerlinks" style="display: flex;">
-            <button class="sign" id="signup">Sign up</button>
-            <button class="sign" id="login">Log in</button>
-        </div>
+       
     </header>
 
     <form id="form1" runat="server">
