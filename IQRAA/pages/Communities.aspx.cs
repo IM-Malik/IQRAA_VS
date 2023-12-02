@@ -14,19 +14,13 @@ namespace IQRAA.pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-               
-        }
-        protected void Page_PreRender(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                var communityData = FetchCommunityData();
-                var jsonCommunityData = Newtonsoft.Json.JsonConvert.SerializeObject(communityData);
-                hdnCommunityData.Value = jsonCommunityData;
-            }
-        }
-
+			if (!IsPostBack)
+			{
+				var communityData = FetchCommunityData();
+				var jsonCommunityData = Newtonsoft.Json.JsonConvert.SerializeObject(communityData);
+				hdnCommunityData.Value = jsonCommunityData;
+			}
+		}
 
         private List<Community> FetchCommunityData()
         {

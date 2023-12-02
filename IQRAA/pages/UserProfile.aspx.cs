@@ -35,9 +35,10 @@ namespace IQRAA.pages
                 {
                     email.Text = dv[0]["email"].ToString();
                     generated_id.Text = dv[0]["user_id"].ToString();
-
-                    //bio.Text = dv[0]["bio"].ToString();
-                    if (username.Text == "" && phone_num.Text == "")
+					phone_num.Text = dv[0]["phone_number"].ToString();
+					username.Text = dv[0]["username"].ToString();
+					bio.Text = dv[0]["bio"].ToString();
+					/*if (username.Text == "" && phone_num.Text == "")
                     {
                         if (dv[0]["username"] != DBNull.Value && dv[0]["phone_number"] != DBNull.Value)
                         {
@@ -75,7 +76,7 @@ namespace IQRAA.pages
                     {
                         // Set a default image if the imagePath is empty or null
                         ProfilePicture.ImageUrl = "media/images/default-image.png"; // Replace with your default image path
-                    }
+                    }*/
                     //media/images/Book100px.png
                 }
             }

@@ -25,10 +25,8 @@
                     <ul style="display: flex; padding: 0; list-style-type: none;">
                         <li><a class="menuBtn" href="BookList2.aspx">Book List Page</a></li>
                         <li><a class="menuBtn" href="UserProfile.aspx" id="user_profile_btn" style="display:none;">User Profile Page</a></li>
-                        <li><a class="menuBtn" id="signout" style="display:none;" onclick="signout()">Sign out</a></li>
-                        
+                        <li><a class="menuBtn" id="signout" style="display:none;" onclick="signout()">Sign out</a></li>                        
                     </ul>
-                    <span class="spanErrr" id="spanErr" style="color:#BC4749">you have to be logged in</span>
                 </div>
             </div>
 
